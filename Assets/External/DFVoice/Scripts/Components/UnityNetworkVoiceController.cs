@@ -32,7 +32,6 @@ namespace DaikonForge.VoIP
 			encodedFrame.ReleaseHeaders();
 		}
 
-		[PunRPC]
 		void vc( byte[] headers, byte[] rawData )
 		{
 			VoicePacketWrapper packet = new VoicePacketWrapper( headers, rawData );
