@@ -20,7 +20,7 @@ public class Player : NetworkBehaviour {
     void CmdSendMessage(string msg)
     {
         VoipMessage message = new VoipMessage();
-        message.message = msg;
+        //message.message = msg;
         NetworkServer.SendToAll(Client.MSG_GENERIC, message);
     }
 }
