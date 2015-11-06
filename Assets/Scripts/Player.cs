@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.Networking.NetworkSystem;
 
 public class Player : NetworkBehaviour {
 
@@ -19,8 +20,8 @@ public class Player : NetworkBehaviour {
     [Command]
     void CmdSendMessage(string msg)
     {
-        VoipMessage message = new VoipMessage();
-        //message.message = msg;
+        StringMessage message = new StringMessage();
+        message.value = msg;
         NetworkServer.SendToAll(Client.MSG_GENERIC, message);
     }
 }

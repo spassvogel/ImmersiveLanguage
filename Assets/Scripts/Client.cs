@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.Networking;
 using System;
+using UnityEngine.Networking.NetworkSystem;
 
 public class Client : NetworkLobbyManager {
 
@@ -24,14 +25,18 @@ public class Client : NetworkLobbyManager {
 
     private void onGenericMessage(NetworkMessage netMsg)
     {
-        VoipMessage voipMsg = netMsg.ReadMessage<VoipMessage>();
-        //Debug.Log(voipMsg.message);
+        StringMessage stringMessage = netMsg.ReadMessage<StringMessage>();
+        Debug.Log(stringMessage.value);
     }
 	
 	private void onVoipMessage(NetworkMessage netMsg)
 	{
 		VoipMessage voipMsg = netMsg.ReadMessage<VoipMessage>();
-		//Debug.Log(voipMsg.message);
+        Debug.Log("Voip message received!");
+
+        var player = singleton.client.connection.playerControllers[0];
+        var voiceController = player.gameObject.GetComponent<VoiceController>();
+        voiceController.FrameReceived(voipMsg.headers, voipMsg.data);
 	}
 
 
