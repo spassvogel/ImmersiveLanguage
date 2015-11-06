@@ -30,21 +30,22 @@ public class VoiceController : VoiceControllerBase
 
 	protected override void OnAudioDataEncoded( VoicePacketWrapper encodedFrame )
 	{
+
         if (tranceiver == null)
-        {
-			tranceiver = GetComponent<VoiceTranceiver>();
+        { 
+            tranceiver = GetComponent<VoiceTranceiver>();
 			if(tranceiver == null)
             {
-				if(!errorDisplayed) Debug.LogError("No VoiceTranceiver found!!");
-                errorDisplayed = true;
+				Debug.LogError("No VoiceTranceiver found!!");
                 return;
             }
-			Debug.Log ("Sending voip package");
-			tranceiver.SendVoipFrame(encodedFrame);
         }
 
+        //Debug.Log("Sending voip package");
+        tranceiver.SendVoipFrame(encodedFrame);
+
         //ReceiveAudioData( encodedFrame );
-	}
+    }
 
     void Update()
     {

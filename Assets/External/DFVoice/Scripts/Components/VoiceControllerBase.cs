@@ -171,7 +171,7 @@ namespace DaikonForge.VoIP
 				packet.Index = nextFrameIndex++;
 				enc = packet;
 
-				OnAudioDataEncoded( enc.Value );
+                OnAudioDataEncoded( enc.Value );
 				enc = codec.GetNextEncodedFrame( frequency );
 			}
 		}
