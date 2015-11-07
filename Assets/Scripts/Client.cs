@@ -32,7 +32,7 @@ public class Client : NetworkLobbyManager {
 	private void onVoipMessage(NetworkMessage netMsg)
 	{
 		VoipMessage voipMsg = netMsg.ReadMessage<VoipMessage>();
-        Debug.Log("Voip message received!");
+        //Debug.Log("Voip message received!");
 
         var player = singleton.client.connection.playerControllers[0];
         var voiceController = player.gameObject.GetComponent<VoiceController>();

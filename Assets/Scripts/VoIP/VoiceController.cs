@@ -72,7 +72,7 @@ public class VoiceController : VoiceControllerBase
     public void FrameReceived(byte[] headers, byte[] data)
     {
         var encodedFrame = new VoicePacketWrapper(headers, data);
-        Debug.Log("playing audio frame " + encodedFrame);
+        //Debug.Log("playing audio frame " + encodedFrame);
 
         ReceiveAudioData(encodedFrame);
     }
