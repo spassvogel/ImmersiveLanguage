@@ -7,14 +7,15 @@ using AssemblyCSharp;
 using UnityEngine.Networking.NetworkSystem;
 
 [RequireComponent (typeof (NetworkIdentity))]
-public class VoiceController : VoiceControllerBase
+[RequireComponent (typeof (VoiceTranceiver))]
+public class VoiceController : VoiceControllerBase, VoipListener
 {
     private VoiceTranceiver tranceiver = null;
-    private bool errorDisplayed = false;
     private NetworkIdentity networkIdentity;
 
 	protected override void Awake() {
 		networkIdentity = GetComponent<NetworkIdentity>();
+		tranceiver = GetComponent<VoiceTranceiver>();
 
 		// -- Copied from VoiceControllerBase; removed microphone start
 		codec = GetCodec();
@@ -39,6 +40,11 @@ public class VoiceController : VoiceControllerBase
 	void Start() {
 		if( IsLocal )
 		{
+			if(microphone == null) {
+				Debug.Log ("No microphone found. Cannot record audio.");
+				return;
+			}
+			Debug.Log ("Start microphone recording.");
 			microphone.OnAudioBufferReady += this.OnMicrophoneDataReady;
 			microphone.StartRecording();
 		}
@@ -54,36 +60,14 @@ public class VoiceController : VoiceControllerBase
 
 	protected override void OnAudioDataEncoded( VoicePacketWrapper encodedFrame )
 	{
-
-        if (tranceiver == null)
-        { 
-            tranceiver = GetComponent<VoiceTranceiver>();
-			if(tranceiver == null)
-            {
-				Debug.LogError("No VoiceTranceiver found!!");
-                return;
-            }
-        }
+		VoipMessage message = new VoipMessage();
+		message.data = encodedFrame.RawData;
+		message.headers = encodedFrame.ObtainHeaders();
+		NetworkServer.SendToAll(MessageNetworkManager.MSG_VOIP, message);
+		encodedFrame.ReleaseHeaders();
 
         tranceiver.SendVoipFrame(encodedFrame);
     }
-
-    void Update()
-    {
-        // For debugging
-        if (Input.GetKeyDown("a"))
-        {
-            tranceiver = GetComponent<VoiceTranceiver>();
-            if (tranceiver == null)
-            {
-                Debug.LogError("No VoiceTranceiver found on NetworkMasterClient!!");
-                return;
-            }
-            tranceiver.SendString("aaa!");
-
-        }
-    }
-
 
     protected override void ReceiveAudioData( VoicePacketWrapper encodedFrame ) {
 		base.ReceiveAudioData (encodedFrame);
@@ -92,7 +76,10 @@ public class VoiceController : VoiceControllerBase
     public void FrameReceived(byte[] headers, byte[] data)
     {
         var encodedFrame = new VoicePacketWrapper(headers, data);
-
         ReceiveAudioData(encodedFrame);
     }
+
+	public void OnVoipMessage(VoipMessage message) {
+		FrameReceived(message.headers, message.data);
+	}
 }
