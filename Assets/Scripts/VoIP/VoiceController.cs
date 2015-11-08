@@ -6,25 +6,49 @@ using UnityEngine.Networking;
 using AssemblyCSharp;
 using UnityEngine.Networking.NetworkSystem;
 
+[RequireComponent (typeof (NetworkIdentity))]
 public class VoiceController : VoiceControllerBase
 {
     private VoiceTranceiver tranceiver = null;
     private bool errorDisplayed = false;
-    private NetworkLobbyPlayer nlp;
+    private NetworkIdentity networkIdentity;
+
+	protected override void Awake() {
+		networkIdentity = GetComponent<NetworkIdentity>();
+
+		// -- Copied from VoiceControllerBase; removed microphone start
+		codec = GetCodec();
+		
+		microphone = GetComponent<AudioInputDeviceBase>();
+		speaker = GetComponent( typeof( IAudioPlayer ) ) as IAudioPlayer;
+		
+		if( microphone == null )
+		{
+			Debug.LogError( "No audio input component attached to speaker", this );
+			return;
+		}
+		
+		if( speaker == null )
+		{
+			Debug.LogError( "No audio output component attached to speaker", this );
+			return;
+		}
+		// --/ End Copy
+	}
+
+	void Start() {
+		if( IsLocal )
+		{
+			microphone.OnAudioBufferReady += this.OnMicrophoneDataReady;
+			microphone.StartRecording();
+		}
+	}
 
     public override bool IsLocal
 	{
 		get
         {
-           // if(nlp == null)
-            //{
-              //  nlp = GetComponent<NetworkLobbyPlayer>();
-              //  if(nlp == null)
-               // {
-                    return true;
-               // }
-           // }
-           // return nlp.isLocalPlayer;
+			return networkIdentity.hasAuthority;
         }
 	}
 
@@ -41,10 +65,7 @@ public class VoiceController : VoiceControllerBase
             }
         }
 
-        //Debug.Log("Sending voip package");
         tranceiver.SendVoipFrame(encodedFrame);
-
-        //ReceiveAudioData( encodedFrame );
     }
 
     void Update()
@@ -65,14 +86,12 @@ public class VoiceController : VoiceControllerBase
 
 
     protected override void ReceiveAudioData( VoicePacketWrapper encodedFrame ) {
-		//Debug.Log (encodedFrame);
 		base.ReceiveAudioData (encodedFrame);
 	}
 
     public void FrameReceived(byte[] headers, byte[] data)
     {
         var encodedFrame = new VoicePacketWrapper(headers, data);
-        //Debug.Log("playing audio frame " + encodedFrame);
 
         ReceiveAudioData(encodedFrame);
     }
