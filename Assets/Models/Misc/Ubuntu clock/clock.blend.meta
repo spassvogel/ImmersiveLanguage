@@ -1,26 +1,26 @@
 fileFormatVersion: 2
-guid: e7460c5c6d20c41439d731d191a4bd6e
-timeCreated: 1447596431
+guid: 6d3a143e682f3054e8035be1da57db99
+timeCreated: 1447626658
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
     100000: bas
     100002: centre
-    100004: gauche
-    100006: haut
-    100008: heure
-    100010: //RootNode
+    100004: //RootNode
+    100006: gauche
+    100008: haut
+    100010: heure
     100012: minute
     100014: rond_bas
     100016: rond_gauche
     100018: rond_haut
     400000: bas
     400002: centre
-    400004: gauche
-    400006: haut
-    400008: heure
-    400010: //RootNode
+    400004: //RootNode
+    400006: gauche
+    400008: haut
+    400010: heure
     400012: minute
     400014: rond_bas
     400016: rond_gauche
@@ -43,15 +43,17 @@ ModelImporter:
     3300012: rond_bas
     3300014: rond_gauche
     3300016: rond_haut
-    4300000: bas
-    4300002: centre
-    4300004: gauche
+    4300000: heure
+    4300002: rond_haut
+    4300004: rond_gauche
     4300006: haut
-    4300008: heure
-    4300010: minute
+    4300008: bas
+    4300010: gauche
     4300012: rond_bas
-    4300014: rond_gauche
-    4300016: rond_haut
+    4300014: minute
+    4300016: centre
+    7400000: Default Take
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -110,7 +112,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
