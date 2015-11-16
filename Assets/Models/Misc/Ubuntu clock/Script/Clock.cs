@@ -8,6 +8,8 @@ public class Clock : MonoBehaviour {
 	private Transform minutes;
 	[SerializeField]
 	private Transform hours;
+	[SerializeField]
+	private Transform seconds;
 
     //[SerializeField]
 	//private float timeModifier = 1;
@@ -26,5 +28,6 @@ public class Clock : MonoBehaviour {
         TimeSpan timespan = DateTime.Now.TimeOfDay;// + DateTime.Now.AddMinutes(Time.frameCount).TimeOfDay;
         hours.localRotation = Quaternion.Euler(0f, (float)timespan.TotalHours * -hoursToDegrees,0f );
         minutes.localRotation = Quaternion.Euler(0f, (float)timespan.TotalMinutes * -minutesToDegrees, 0f);
+        seconds.localRotation = Quaternion.Euler(0f, (float)timespan.TotalSeconds * -minutesToDegrees, 0f);
 	}
 }

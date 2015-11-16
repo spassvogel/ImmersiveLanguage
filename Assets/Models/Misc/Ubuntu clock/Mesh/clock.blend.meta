@@ -15,6 +15,7 @@ ModelImporter:
     100014: rond_bas
     100016: rond_gauche
     100018: rond_haut
+    100020: seconds
     400000: bas
     400002: centre
     400004: //RootNode
@@ -25,6 +26,7 @@ ModelImporter:
     400014: rond_bas
     400016: rond_gauche
     400018: rond_haut
+    400020: seconds
     2300000: bas
     2300002: centre
     2300004: gauche
@@ -34,6 +36,7 @@ ModelImporter:
     2300012: rond_bas
     2300014: rond_gauche
     2300016: rond_haut
+    2300018: seconds
     3300000: bas
     3300002: centre
     3300004: gauche
@@ -43,6 +46,7 @@ ModelImporter:
     3300012: rond_bas
     3300014: rond_gauche
     3300016: rond_haut
+    3300018: seconds
     4300000: heure
     4300002: rond_haut
     4300004: rond_gauche
@@ -52,6 +56,7 @@ ModelImporter:
     4300012: rond_bas
     4300014: minute
     4300016: centre
+    4300018: seconds
     7400000: Default Take
     9500000: //RootNode
   materials:
