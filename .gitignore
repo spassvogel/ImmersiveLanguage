@@ -33,3 +33,6 @@ Thumbs.db.meta
 
 # Output folder
 Bin/
+
+# Models
+Assets/Models
