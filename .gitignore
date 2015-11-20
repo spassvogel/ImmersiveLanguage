@@ -29,6 +29,7 @@ obj/
 .Trashes
 ehthumbs.db
 Thumbs.db
+Thumbs.db.meta
 
 # Output folder
 Bin/
