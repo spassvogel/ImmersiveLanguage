@@ -6,6 +6,7 @@ using System;
 
 public class VoipMessage : MessageBase {
 
+    public uint originID;
     public byte[] headers;
     public byte[] data;
 

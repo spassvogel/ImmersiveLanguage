@@ -329,7 +329,7 @@ MonoBehaviour:
   ChunkSize: 640
   Mode: 1
   PushToTalk: 0
-  AmplitudeThreshold: 0
+  AmplitudeThreshold: .100000001
 --- !u!114 &11433596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -448,6 +448,10 @@ Prefab:
       propertyPath: VoipListeners.Array.data[0]
       value: 
       objectReference: {fileID: 127176}
+    - target: {fileID: 0}
+      propertyPath: AmplitudeThreshold
+      value: .100000001
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 127176}

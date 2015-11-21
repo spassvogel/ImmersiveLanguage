@@ -8,7 +8,7 @@ using UnityEngine.Networking.NetworkSystem;
 
 [RequireComponent (typeof (NetworkIdentity))]
 [RequireComponent (typeof (VoiceTranceiver))]
-public class VoiceController : VoiceControllerBase, VoipListener
+public class VoiceController : VoiceControllerBase
 {
     private VoiceTranceiver tranceiver = null;
     private NetworkIdentity networkIdentity;
@@ -16,6 +16,9 @@ public class VoiceController : VoiceControllerBase, VoipListener
 	protected override void Awake() {
 		networkIdentity = GetComponent<NetworkIdentity>();
 		tranceiver = GetComponent<VoiceTranceiver>();
+
+		// Listen to VoipTranceiver
+		tranceiver.onReceiveVoipFrame(this.FrameReceived);
 
 		// -- Copied from VoiceControllerBase; removed microphone start
 		codec = GetCodec();
@@ -63,23 +66,30 @@ public class VoiceController : VoiceControllerBase, VoipListener
 		VoipMessage message = new VoipMessage();
 		message.data = encodedFrame.RawData;
 		message.headers = encodedFrame.ObtainHeaders();
-		NetworkServer.SendToAll(MessageNetworkManager.MSG_VOIP, message);
-		encodedFrame.ReleaseHeaders();
 
         tranceiver.SendVoipFrame(encodedFrame);
     }
 
-    protected override void ReceiveAudioData( VoicePacketWrapper encodedFrame ) {
-		base.ReceiveAudioData (encodedFrame);
-	}
-
-    public void FrameReceived(byte[] headers, byte[] data)
+    private bool test_Invoked = false;
+    public void FrameReceived(VoicePacketWrapper frame)
     {
-        var encodedFrame = new VoicePacketWrapper(headers, data);
-        ReceiveAudioData(encodedFrame);
+        if(!test_Invoked)
+        {
+            Invoke("ResetScale", .5f);
+            test_Invoked = true;
+        }
+        transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
+        ReceiveAudioData(frame);
     }
 
-	public void OnVoipMessage(VoipMessage message) {
-		FrameReceived(message.headers, message.data);
-	}
+    private void ResetScale()
+    {
+        transform.localScale = Vector3.one;
+        Invoke("ResetInvoked", .5f);
+    }
+
+    private void ResetInvoked()
+    {
+        test_Invoked = false;
+    }
 }
