@@ -30,16 +30,15 @@ GameObject:
   - 65: {fileID: 6533624}
   - 23: {fileID: 2303560}
   - 114: {fileID: 11472780}
-  - 114: {fileID: 11406884}
   - 114: {fileID: 11402254}
-  - 114: {fileID: 11435054}
-  - 82: {fileID: 8293446}
-  - 114: {fileID: 11438308}
-  - 82: {fileID: 8285360}
-  - 114: {fileID: 11451246}
-  - 114: {fileID: 11489504}
+  - 114: {fileID: 11433596}
+  - 114: {fileID: 11489862}
+  - 82: {fileID: 8261906}
+  - 114: {fileID: 11402264}
+  - 114: {fileID: 11461212}
+  - 114: {fileID: 11425276}
   m_Layer: 0
-  m_Name: Box
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -218,77 +217,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!82 &8285360
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 127176}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
---- !u!82 &8293446
+--- !u!82 &8261906
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -370,31 +299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowLobbyGUI: 1
---- !u!114 &11406884
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 127176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddbe718dbf96bd547ac67d2efb3b5901, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11435054
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 127176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba5e7a4812412904abea60a6b5b9b345, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DebugAudio: 1
-  Mute: 0
---- !u!114 &11438308
+--- !u!114 &11402264
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -410,7 +315,7 @@ MonoBehaviour:
   EqualizeSpeed: 1
   TargetEqualizeVolume: .75
   MaxEqualization: 5
---- !u!114 &11451246
+--- !u!114 &11425276
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -424,7 +329,32 @@ MonoBehaviour:
   ChunkSize: 640
   Mode: 1
   PushToTalk: 0
-  AmplitudeThreshold: 0
+  AmplitudeThreshold: .100000001
+--- !u!114 &11433596
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e904559f96a703943a92e743db837fb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11461212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df01baf1d8bb77b42992d2ac0e574866, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VoipListeners:
+  - {fileID: 127176}
+  DebugListeners: []
 --- !u!114 &11472780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -456,8 +386,8 @@ MonoBehaviour:
     i14: 162
     i15: 243
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
---- !u!114 &11489504
+  m_LocalPlayerAuthority: 1
+--- !u!114 &11489862
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -465,9 +395,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 127176}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e904559f96a703943a92e743db837fb8, type: 3}
+  m_Script: {fileID: 11500000, guid: ba5e7a4812412904abea60a6b5b9b345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DebugAudio: 0
+  Mute: 0
 --- !u!136 &13645540
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -489,8 +421,12 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: VoipListeners.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_LocalPlayerAuthority
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Enabled
@@ -498,7 +434,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: DebugAudio
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_ProbeAnchor
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: test
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: VoipListeners.Array.data[0]
+      value: 
+      objectReference: {fileID: 127176}
+    - target: {fileID: 0}
+      propertyPath: AmplitudeThreshold
+      value: .100000001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

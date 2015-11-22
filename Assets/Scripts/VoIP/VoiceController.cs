@@ -6,74 +6,90 @@ using UnityEngine.Networking;
 using AssemblyCSharp;
 using UnityEngine.Networking.NetworkSystem;
 
+[RequireComponent (typeof (NetworkIdentity))]
+[RequireComponent (typeof (VoiceTranceiver))]
 public class VoiceController : VoiceControllerBase
 {
     private VoiceTranceiver tranceiver = null;
-    private bool errorDisplayed = false;
-    private NetworkLobbyPlayer nlp;
+    private NetworkIdentity networkIdentity;
+
+	protected override void Awake() {
+		networkIdentity = GetComponent<NetworkIdentity>();
+		tranceiver = GetComponent<VoiceTranceiver>();
+
+		// Listen to VoipTranceiver
+		tranceiver.onReceiveVoipFrame(this.FrameReceived);
+
+		// -- Copied from VoiceControllerBase; removed microphone start
+		codec = GetCodec();
+		
+		microphone = GetComponent<AudioInputDeviceBase>();
+		speaker = GetComponent( typeof( IAudioPlayer ) ) as IAudioPlayer;
+		
+		if( microphone == null )
+		{
+			Debug.LogError( "No audio input component attached to speaker", this );
+			return;
+		}
+		
+		if( speaker == null )
+		{
+			Debug.LogError( "No audio output component attached to speaker", this );
+			return;
+		}
+		// --/ End Copy
+	}
+
+	void Start() {
+		if( IsLocal )
+		{
+			if(microphone == null) {
+				Debug.Log ("No microphone found. Cannot record audio.");
+				return;
+			}
+			Debug.Log ("Start microphone recording.");
+			microphone.OnAudioBufferReady += this.OnMicrophoneDataReady;
+			microphone.StartRecording();
+		}
+	}
 
     public override bool IsLocal
 	{
 		get
         {
-           // if(nlp == null)
-            //{
-              //  nlp = GetComponent<NetworkLobbyPlayer>();
-              //  if(nlp == null)
-               // {
-                    return true;
-               // }
-           // }
-           // return nlp.isLocalPlayer;
+			return networkIdentity.hasAuthority;
         }
 	}
 
 	protected override void OnAudioDataEncoded( VoicePacketWrapper encodedFrame )
 	{
+		VoipMessage message = new VoipMessage();
+		message.data = encodedFrame.RawData;
+		message.headers = encodedFrame.ObtainHeaders();
 
-        if (tranceiver == null)
-        { 
-            tranceiver = GetComponent<VoiceTranceiver>();
-			if(tranceiver == null)
-            {
-				Debug.LogError("No VoiceTranceiver found!!");
-                return;
-            }
-        }
-
-        //Debug.Log("Sending voip package");
         tranceiver.SendVoipFrame(encodedFrame);
-
-        //ReceiveAudioData( encodedFrame );
     }
 
-    void Update()
+    private bool test_Invoked = false;
+    public void FrameReceived(VoicePacketWrapper frame)
     {
-        // For debugging
-        if (Input.GetKeyDown("a"))
+        if(!test_Invoked)
         {
-            tranceiver = GetComponent<VoiceTranceiver>();
-            if (tranceiver == null)
-            {
-                Debug.LogError("No VoiceTranceiver found on NetworkMasterClient!!");
-                return;
-            }
-            tranceiver.SendString("aaa!");
-
+            Invoke("ResetScale", .5f);
+            test_Invoked = true;
         }
+        transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
+        ReceiveAudioData(frame);
     }
 
-
-    protected override void ReceiveAudioData( VoicePacketWrapper encodedFrame ) {
-		//Debug.Log (encodedFrame);
-		base.ReceiveAudioData (encodedFrame);
-	}
-
-    public void FrameReceived(byte[] headers, byte[] data)
+    private void ResetScale()
     {
-        var encodedFrame = new VoicePacketWrapper(headers, data);
-        //Debug.Log("playing audio frame " + encodedFrame);
+        transform.localScale = Vector3.one;
+        Invoke("ResetInvoked", .5f);
+    }
 
-        ReceiveAudioData(encodedFrame);
+    private void ResetInvoked()
+    {
+        test_Invoked = false;
     }
 }
