@@ -37,3 +37,7 @@ Bin/
 
 # Models
 Assets/Models
+
+# Git generated
+*.orig
+*.orig.meta
