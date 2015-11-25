@@ -263,7 +263,7 @@ MonoBehaviour:
   m_NetworkPort: 7777
   m_ServerBindToIP: 0
   m_ServerBindAddress: 
-  m_NetworkAddress: 192.168.178.14
+  m_NetworkAddress: 192.168.1.73
   m_DontDestroyOnLoad: 0
   m_RunInBackground: 1
   m_ScriptCRCCheck: 1
@@ -314,9 +314,9 @@ MonoBehaviour:
   m_MinPlayers: 0
   m_LobbyPlayerPrefab: {fileID: 11402254, guid: fbedbab053afc6546a30521b6bdaa2f3,
     type: 2}
-  m_GamePlayerPrefab: {fileID: 127176, guid: fbedbab053afc6546a30521b6bdaa2f3, type: 2}
+  m_GamePlayerPrefab: {fileID: 113406, guid: 14223205d04a953408c0b0e3a9597dad, type: 2}
   m_LobbyScene: Lobby
-  m_PlayScene: Main
+  m_PlayScene: LaTienda
   lobbySlots: []
 --- !u!4 &973597698
 Transform:
