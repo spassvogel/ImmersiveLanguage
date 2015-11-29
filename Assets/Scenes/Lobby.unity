@@ -314,7 +314,7 @@ MonoBehaviour:
   m_MinPlayers: 0
   m_LobbyPlayerPrefab: {fileID: 11402254, guid: fbedbab053afc6546a30521b6bdaa2f3,
     type: 2}
-  m_GamePlayerPrefab: {fileID: 113406, guid: 14223205d04a953408c0b0e3a9597dad, type: 2}
+  m_GamePlayerPrefab: {fileID: 128154, guid: a2e1499e49356414eb56a92042fcd140, type: 2}
   m_LobbyScene: Lobby
   m_PlayScene: LaTienda
   lobbySlots: []
