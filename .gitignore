@@ -5,7 +5,7 @@ Temp/
 Library/
 
 # =============================================== #
-# Visual Studio / MonoDevelop / Consulo generated #
+# IDE generated #
 # =============================================== #
 ExportedObj/
 obj/
