@@ -2,8 +2,9 @@
 using System.Collections;
 using System;
 using UnityEngine.Networking.NetworkSystem;
+using UnityEngine.Networking;
 
-public class Player : MonoBehaviour {
+public class ImmersiveNetworkLobbyPlayer : NetworkLobbyPlayer {
 
     // Use this for initialization
     void Start () {
@@ -14,5 +15,11 @@ public class Player : MonoBehaviour {
 	void Update () {
 		
 	}
+
+
+    void Awake()
+    {
+        //DontDestroyOnLoad(transform.gameObject);
+    }
 
 }

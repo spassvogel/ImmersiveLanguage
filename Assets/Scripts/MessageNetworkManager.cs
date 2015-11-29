@@ -22,8 +22,8 @@ public class MessageNetworkManager : NetworkLobbyManager {
     override public void OnStartClient(NetworkClient client)
     {
         base.OnStartClient(client);
-        client.RegisterHandler(MessageNetworkManager.MSG_DEBUG, onDebugMessage);
-		client.RegisterHandler(MessageNetworkManager.MSG_VOIP, onVoipMessage);
+        client.RegisterHandler(MSG_DEBUG, onDebugMessage);
+		client.RegisterHandler(MSG_VOIP, onVoipMessage);
 	}
 
 	public void RegisterMessageNode(MessageNode node) {
@@ -51,4 +51,42 @@ public class MessageNetworkManager : NetworkLobbyManager {
     void Update () {
 	
 	}
+
+    public override void OnLobbyStartClient(NetworkClient lobbyClient)
+    {
+        Debug.Log("OnLobbyStartClient");
+        base.OnLobbyStartClient(lobbyClient);
+    }
+
+    public override GameObject OnLobbyServerCreateLobbyPlayer(NetworkConnection conn, short playerControllerId)
+    {
+        Debug.Log("OnLobbyServerCreateLobbyPlayer");
+        //conn.
+        return base.OnLobbyServerCreateLobbyPlayer(conn, playerControllerId);
+    }
+
+    public override GameObject OnLobbyServerCreateGamePlayer(NetworkConnection conn, short playerControllerId)
+    {
+        Debug.Log("OnLobbyServerCreateGamePlayer");
+        var player = base.OnLobbyServerCreateGamePlayer(conn, playerControllerId);
+
+
+        return player;
+    }
+
+    public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId, NetworkReader extraMessageReader)
+    {
+        Debug.Log("OnServerAddPlayer");
+
+        base.OnServerAddPlayer(conn, playerControllerId, extraMessageReader);
+    }
+
+    public override bool OnLobbyServerSceneLoadedForPlayer(GameObject lobbyPlayer, GameObject gamePlayer)
+    {
+        Debug.Log("OnLobbyServerSceneLoadedForPlayer " + gamePlayer);
+        return base.OnLobbyServerSceneLoadedForPlayer(lobbyPlayer, gamePlayer);
+    }
+
+
+    //  OnStartLocalPlayer
 }
