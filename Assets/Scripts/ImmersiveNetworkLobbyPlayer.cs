@@ -19,7 +19,7 @@ public class ImmersiveNetworkLobbyPlayer : NetworkLobbyPlayer {
 
     void Awake()
     {
-        //DontDestroyOnLoad(transform.gameObject);
+        DontDestroyOnLoad(transform.gameObject);
     }
 
 }
