@@ -338,7 +338,7 @@ Prefab:
       objectReference: {fileID: 181656, guid: a14b6354a6fbbf44dbb06d9d8c75a9eb, type: 2}
     - target: {fileID: 11475086, guid: c0978251ff7b10d4fb954a4b56acd9f0, type: 2}
       propertyPath: prematchCountdown
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11475086, guid: c0978251ff7b10d4fb954a4b56acd9f0, type: 2}
       propertyPath: m_MinPlayers
@@ -354,7 +354,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11475086, guid: c0978251ff7b10d4fb954a4b56acd9f0, type: 2}
       propertyPath: m_PlayScene
-      value: 
+      value: LaTienda
       objectReference: {fileID: 0}
     - target: {fileID: 11475086, guid: c0978251ff7b10d4fb954a4b56acd9f0, type: 2}
       propertyPath: m_MaxPlayers
@@ -362,6 +362,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11475086, guid: c0978251ff7b10d4fb954a4b56acd9f0, type: 2}
       propertyPath: m_MaxPlayersPerConnection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11475086, guid: c0978251ff7b10d4fb954a4b56acd9f0, type: 2}
+      propertyPath: m_CustomConfig
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:

@@ -1439,7 +1439,7 @@ GameObject:
   - 4: {fileID: 489064}
   - 95: {fileID: 9503188}
   - 114: {fileID: 11418138}
-  - 114: {fileID: 11481550}
+  - 114: {fileID: 11452354}
   m_Layer: 0
   m_Name: GamePlayer
   m_TagString: Untagged
@@ -3277,7 +3277,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 136338}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!92 &9263504
 Behaviour:
   m_ObjectHideFlags: 1
@@ -3441,6 +3441,19 @@ MonoBehaviour:
   screenSize: 0
   deviceType: 0
   stereoScreenScale: 1
+--- !u!114 &11452354
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5137a2f51fcebbd4bb76494d102fa8a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLobbyGUI: 1
+  audioListener: {fileID: 8158404}
 --- !u!114 &11475226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3456,23 +3469,6 @@ MonoBehaviour:
   trackPosition: 0
   target: {fileID: 0}
   updateEarly: 0
---- !u!114 &11481550
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 181656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5137a2f51fcebbd4bb76494d102fa8a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_LastSendTime: 0
-  m_SyncVarGuard: 0
-  m_MyView: {fileID: 0}
-  ShowLobbyGUI: 1
-  m_Slot: 0
-  m_ReadyToBegin: 0
 --- !u!124 &12437996
 Behaviour:
   m_ObjectHideFlags: 1
