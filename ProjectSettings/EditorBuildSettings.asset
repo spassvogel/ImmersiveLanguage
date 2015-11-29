@@ -7,13 +7,13 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/NewLobby.unity
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
   - enabled: 0
     path: Assets/Scenes/Lobby.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LaTienda.unity
   - enabled: 0
     path: Assets/Scenes/Lobby.unity
   - enabled: 0
     path: Assets/SampleScenes/Scenes/NetworkSpaceship.unity
-  - enabled: 1
-    path: Assets/Scenes/Main.unity
