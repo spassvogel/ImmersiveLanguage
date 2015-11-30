@@ -20,6 +20,8 @@ public class CardboardHeadController : MonoBehaviour {
   /// during `Update()` by setting this to true.
   public bool updateEarly = false;
 
+  [SerializeField]  private Vector3 offset;
+
   /// Returns a ray based on the heads position and forward direction, after making
   /// sure the transform is up to date.  Use to raycast into the scene to determine
   /// objects that the user is looking at.
@@ -52,7 +54,11 @@ public class CardboardHeadController : MonoBehaviour {
     updated = true;
     Cardboard.SDK.UpdateState();
 
-    target.transform.rotation = Cardboard.SDK.HeadPose.Orientation;
+
+	// Update target rotation (the head wrapper)
+    target.transform.rotation = Quaternion.Euler(offset.x, offset.y, offset.z) * Cardboard.SDK.HeadPose.Orientation;
+	// Update self rotation (which contains the cameras)
 	transform.localRotation = Cardboard.SDK.HeadPose.Orientation;
+	
   }
 }
