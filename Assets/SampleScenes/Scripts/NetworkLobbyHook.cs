@@ -7,10 +7,9 @@ using UnityEngine.Networking;
 public class NetworkLobbyHook : LobbyHook
 {
     public override void OnLobbyServerSceneLoadedForPlayer(NetworkManager manager, GameObject lobbyPlayer, GameObject gamePlayer)
-    {
-        Debug.Log("the scene is loaded ");
-        
+    {       
         LobbyPlayer lobby = lobbyPlayer.GetComponent<LobbyPlayer>();
+        gamePlayer.name = lobby.playerName;
         //gamePlayer.transform.position = new Vector3(Random.Range(0, 3), 0, 0);
         //NetworkSpaceship spaceship = gamePlayer.GetComponent<NetworkSpaceship>();
 /*
