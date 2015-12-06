@@ -9,8 +9,12 @@ public class SimpleMouthMovement : MonoBehaviour {
 
 
 	[SerializeField] private Transform jaw;
+	[SerializeField] private Transform upperLip;
+		
 	[SerializeField] private float jawRestPosition = 0;
 	[SerializeField] private float jawFullOpenPosition = -11;
+	[SerializeField] private float upperLipRestPosition = 0.01495764f;
+	[SerializeField] private float upperLipOpenPosition = 0.0115f;
 	
 	private bool mouthMoving = false;
 	private bool mouthClosing = false;
@@ -26,8 +30,9 @@ public class SimpleMouthMovement : MonoBehaviour {
 		if(talking){
 			if(!mouthMoving){
 				// We're in 'talking' mode, so move the jaw to random positions when not moving already
-				float distance = Random.Range(jawRestPosition, jawFullOpenPosition);
-				StartCoroutine(MoveJaw(distance, Random.Range(.05f, .5f)));					
+				float jawDistance = Random.Range(jawRestPosition, jawFullOpenPosition);
+				float lipX = Random.Range(upperLipRestPosition, upperLipOpenPosition);
+				StartCoroutine(MoveJaw(jawDistance,lipX, Random.Range(.05f, .5f)));					
 			}
 		}
 		else if (!mouthMoving && jaw.transform.localRotation.z != jawRestPosition) {
@@ -37,25 +42,30 @@ public class SimpleMouthMovement : MonoBehaviour {
 		}
 	}
 	
-	IEnumerator MoveJaw (float newRotation, float time)
+	IEnumerator MoveJaw (float newRotation, float newLipX, float time)
  	{
 		mouthMoving = true;
      	float elapsedTime = 0;
-     	float startingRotation = jaw.transform.localRotation.z;
+     	float jawStartingRotation = jaw.transform.localRotation.z;
+		float lipPosition = upperLip.transform.localPosition.x;
+		
      	while (elapsedTime < time)
      	{
-			float z = Mathf.Lerp(startingRotation, newRotation, (elapsedTime / time));
-			jaw.transform.localRotation = Quaternion.Euler(0, 0, z); 
-			//new Vector3(jaw.transform.localPosition.x, jaw.transform.localPosition.y, z);
+			float jawZ = Mathf.Lerp(jawStartingRotation, newRotation, (elapsedTime / time));
+			jaw.transform.localRotation = Quaternion.Euler(0, 0, jawZ); 
+			
+			float lipX = Mathf.Lerp(lipPosition, newLipX, (elapsedTime / time));
+			upperLip.transform.localPosition = new Vector3(lipX, upperLip.transform.localPosition.y, upperLip.transform.localPosition.z);
          	elapsedTime += Time.deltaTime;
          	yield return new WaitForEndOfFrame();
      	}
+
 		mouthMoving = false;
 	 }
 	 
 	 IEnumerator CloseJaw(float time){
 
-		 yield return StartCoroutine(MoveJaw(jawRestPosition, time));
+		 yield return StartCoroutine(MoveJaw(jawRestPosition,upperLipRestPosition, time));
 		 mouthClosing = false;	
 	 }
 }
