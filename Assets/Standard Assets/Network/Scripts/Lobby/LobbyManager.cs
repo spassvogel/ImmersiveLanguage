@@ -14,6 +14,8 @@ namespace UnityStandardAssets.Network
 
         static public LobbyManager s_Singleton;
 
+		[SerializeField]
+		private GameObject[] gamePayerPrefabs;
 
         [Tooltip("Time in second between all players ready & match start")]
         public float prematchCountdown = 5.0f;
@@ -275,8 +277,7 @@ namespace UnityStandardAssets.Network
             GameObject obj = Instantiate(lobbyPlayerPrefab.gameObject) as GameObject;
 
             LobbyPlayer newPlayer = obj.GetComponent<LobbyPlayer>();
-            newPlayer.ToggleJoinButton(numPlayers + 1 >= minPlayers);
-
+            newPlayer.ToggleJoinButton(numPlayers + 1 >= minPlayers);	
 
             for (int i = 0; i < lobbySlots.Length; ++i)
             {
@@ -305,6 +306,7 @@ namespace UnityStandardAssets.Network
                 }
             }
         }
+		
 
         public override void OnLobbyServerDisconnect(NetworkConnection conn)
         {
@@ -320,6 +322,16 @@ namespace UnityStandardAssets.Network
             }
 
         }
+		
+		public override GameObject OnLobbyServerCreateGamePlayer(NetworkConnection conn, short playerControllerId){
+			// Here the actual player is created
+			//Debug.Log(playerControllerId);
+			Debug.Log(conn.connectionId);
+			//Debug.Log(conn.playerControllers[0].gameObject.playerName);
+			var player = (GameObject)GameObject.Instantiate(gamePlayerPrefab, Vector3.zero, Quaternion.identity);
+		
+			return player;
+		} 
 
         public override bool OnLobbyServerSceneLoadedForPlayer(GameObject lobbyPlayer, GameObject gamePlayer)
         {

@@ -53,6 +53,7 @@ namespace UnityStandardAssets.Network
 
             for (int i = 0; i < response.matches.Count; ++i)
             {
+				Debug.Log("yo");
                 GameObject o = Instantiate(serverEntryPrefab) as GameObject;
 
                 o.GetComponent<LobbyServerEntry>().Populate(response.matches[i], lobbyManager, (i%2 == 0) ? OddServerColor : EvenServerColor);

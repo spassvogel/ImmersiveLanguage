@@ -56,7 +56,8 @@ public class SimpleMouthMovement : MonoBehaviour {
 			
 			float lipX = Mathf.Lerp(lipPosition, newLipX, (elapsedTime / time));
 			upperLip.transform.localPosition = new Vector3(lipX, upperLip.transform.localPosition.y, upperLip.transform.localPosition.z);
-         	elapsedTime += Time.deltaTime;
+         	
+			elapsedTime += Time.deltaTime;
          	yield return new WaitForEndOfFrame();
      	}
 
