@@ -15,7 +15,7 @@ namespace UnityStandardAssets.Network
         static public LobbyManager s_Singleton;
 
 		[SerializeField]
-		private GameObject[] gamePayerPrefabs;
+		private GamePlayerConfig[] gamePayerConfigs;
 
         [Tooltip("Time in second between all players ready & match start")]
         public float prematchCountdown = 5.0f;
@@ -325,11 +325,14 @@ namespace UnityStandardAssets.Network
 		
 		public override GameObject OnLobbyServerCreateGamePlayer(NetworkConnection conn, short playerControllerId){
 			// Here the actual player is created
-			//Debug.Log(playerControllerId);
-			Debug.Log(conn.connectionId);
-			//Debug.Log(conn.playerControllers[0].gameObject.playerName);
-			var player = (GameObject)GameObject.Instantiate(gamePlayerPrefab, Vector3.zero, Quaternion.identity);
-		
+					
+			// I have no friggin' idea why connectionId is -1, 1 ... there has to be a better way..
+			int index = conn.connectionId < 0 ? 0 : conn.connectionId;
+			var prefab = gamePayerConfigs[index].prefab;
+			var position = gamePayerConfigs[index].spawnPosition;
+			var rotation = Quaternion.Euler(gamePayerConfigs[index].spawnRotation);
+			var player = (GameObject)Instantiate(prefab, position, rotation);
+
 			return player;
 		} 
 
@@ -397,7 +400,7 @@ namespace UnityStandardAssets.Network
             infoPanel.gameObject.SetActive(false);
 
             conn.RegisterHandler(MsgKicked, KickedMessageHandler);
-
+			
             if (!NetworkServer.active)
             {//only to do on pure client (not self hosting client)
                 ChangeTo(lobbyPanel);
@@ -417,6 +420,17 @@ namespace UnityStandardAssets.Network
         {
             ChangeTo(mainMenuPanel);
             infoPanel.Display("Cient error : " + (errorCode == 6 ? "timeout" : errorCode.ToString()), "Close", null);
+        }
+
+		[System.Serializable]
+        public class GamePlayerConfig
+        {
+	        [Tooltip("This prefab will be spawned for this player")]
+			public GameObject prefab;
+	        [Tooltip("The prefab will spawn at this position")]
+			public Vector3 spawnPosition;
+	        [Tooltip("The prefab will have this rotation")]
+			public Vector3 spawnRotation;
         }
     }
 }
