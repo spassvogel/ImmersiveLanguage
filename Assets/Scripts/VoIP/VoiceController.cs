@@ -8,6 +8,8 @@ using UnityEngine.Networking.NetworkSystem;
 
 [RequireComponent (typeof (NetworkIdentity))]
 [RequireComponent (typeof (VoiceTranceiver))]
+[RequireComponent (typeof (MicrophoneInputDevice))]
+[RequireComponent (typeof (UnityAudioPlayer))]
 public class VoiceController : VoiceControllerBase
 {
     private VoiceTranceiver tranceiver = null;
@@ -23,34 +25,28 @@ public class VoiceController : VoiceControllerBase
 		// -- Copied from VoiceControllerBase; removed microphone start
 		codec = GetCodec();
 		
-		microphone = GetComponent<AudioInputDeviceBase>();
-		speaker = GetComponent( typeof( IAudioPlayer ) ) as IAudioPlayer;
+		microphone = GetComponent<MicrophoneInputDevice>() as AudioInputDeviceBase;
+		speaker = GetComponent<UnityAudioPlayer>() as IAudioPlayer;
+        if(speaker == null) {
+            Debug.LogError("No AudioSource found.");
+        }
+        if(microphone == null) {
+            Debug.LogError("No MicrophoneInputDevice found.");
+        }
 		
-		if( microphone == null )
-		{
-			Debug.LogError( "No audio input component attached to speaker", this );
-			return;
-		}
-		
-		if( speaker == null )
-		{
-			Debug.LogError( "No audio output component attached to speaker", this );
-			return;
-		}
 		// --/ End Copy
 	}
 
 	void Start() {
+        Test();
 		if( IsLocal )
 		{
-			if(microphone == null) {
-				Debug.Log ("No microphone found. Cannot record audio.");
-				return;
-			}
-			Debug.Log ("Start microphone recording.");
+            Debug.Log("Start microphone recording");
 			microphone.OnAudioBufferReady += this.OnMicrophoneDataReady;
 			microphone.StartRecording();
-		}
+		} else {
+            Debug.Log("No local authority.");
+        }
 	}
 
     public override bool IsLocal
@@ -73,23 +69,12 @@ public class VoiceController : VoiceControllerBase
     private bool test_Invoked = false;
     public void FrameReceived(VoicePacketWrapper frame)
     {
-        if(!test_Invoked)
-        {
-            Invoke("ResetScale", .5f);
-            test_Invoked = true;
-        }
-        transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
         ReceiveAudioData(frame);
     }
 
-    private void ResetScale()
+    private void Test()
     {
-        transform.localScale = Vector3.one;
-        Invoke("ResetInvoked", .5f);
-    }
-
-    private void ResetInvoked()
-    {
-        test_Invoked = false;
+        Debug.Log(IsLocal);
+        Invoke("Test", .5f);
     }
 }

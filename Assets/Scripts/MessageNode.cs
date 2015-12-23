@@ -34,6 +34,7 @@ public class MessageNode : MonoBehaviour {
 			}
 		}
 
+        Debug.Log("Registering Message Node");
 		MessageNetworkManager.RegisterMessageNode(this);
 	}
 
