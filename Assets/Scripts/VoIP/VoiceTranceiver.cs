@@ -24,8 +24,7 @@ namespace AssemblyCSharp
 		}
 
 		public void OnVoipMessage(VoipMessage message) {
-			// Check if I am not the origin
-            Debug.Log("Receiving VOIP Message");
+			// Check if I am indeed the origin (end-to-end communication only)
 			if(message.originID == this.netId.Value) {
                 var encodedFrame = new VoicePacketWrapper(message.headers, message.data);
 				foreach(Listener listener in listeners) {
@@ -46,7 +45,6 @@ namespace AssemblyCSharp
 			message.data = encodedFrame.RawData;
 			message.headers = encodedFrame.ObtainHeaders();
             
-            Debug.Log("Sending VOIP Message");
 			NetworkServer.SendToAll(MessageNetworkManager.MSG_VOIP, message);
 			encodedFrame.ReleaseHeaders();
 		}

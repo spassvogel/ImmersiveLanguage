@@ -1,10 +1,8 @@
 using UnityEngine;
-using System.Collections;
 
 using DaikonForge.VoIP;
 using UnityEngine.Networking;
 using AssemblyCSharp;
-using UnityEngine.Networking.NetworkSystem;
 
 [RequireComponent (typeof (NetworkIdentity))]
 [RequireComponent (typeof (VoiceTranceiver))]
@@ -38,15 +36,12 @@ public class VoiceController : VoiceControllerBase
 	}
 
 	void Start() {
-        Test();
 		if( IsLocal )
 		{
-            Debug.Log("Start microphone recording");
+            Debug.Log("Start microphone recording.");
 			microphone.OnAudioBufferReady += this.OnMicrophoneDataReady;
 			microphone.StartRecording();
-		} else {
-            Debug.Log("No local authority.");
-        }
+		}
 	}
 
     public override bool IsLocal
@@ -63,18 +58,13 @@ public class VoiceController : VoiceControllerBase
 		message.data = encodedFrame.RawData;
 		message.headers = encodedFrame.ObtainHeaders();
 
+        Debug.Log("Send VOIP");
         tranceiver.SendVoipFrame(encodedFrame);
     }
-
-    private bool test_Invoked = false;
+    
     public void FrameReceived(VoicePacketWrapper frame)
     {
+        Debug.Log("Receive VOIP");
         ReceiveAudioData(frame);
-    }
-
-    private void Test()
-    {
-        Debug.Log(IsLocal);
-        Invoke("Test", .5f);
     }
 }

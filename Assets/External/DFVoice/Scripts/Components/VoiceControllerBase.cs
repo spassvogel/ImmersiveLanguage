@@ -159,7 +159,6 @@ namespace DaikonForge.VoIP
 		/// </summary>
 		protected virtual void OnMicrophoneDataReady( BigArray<float> newData, int frequency )
 		{
-            Debug.Log("Recorded audio");
 			if( !IsLocal ) return;
 
 			codec.OnAudioAvailable( newData );
