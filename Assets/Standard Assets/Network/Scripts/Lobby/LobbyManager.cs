@@ -359,35 +359,37 @@ namespace UnityStandardAssets.Network
             float remainingTime = prematchCountdown;
             int floorTime = Mathf.FloorToInt(remainingTime);
 
-            while (remainingTime > 0)
-            {
-                yield return null;
+            // TODO: The code below produces a NullPointerException 
 
-                remainingTime -= Time.deltaTime;
-                int newFloorTime = Mathf.FloorToInt(remainingTime);
+            // while (remainingTime > 0)
+            // {
+            //     yield return null;
 
-                if (newFloorTime != floorTime)
-                {//to avoid flooding the network of message, we only send a notice to client when the number of plain seconds change.
-                    floorTime = newFloorTime;
+            //     remainingTime -= Time.deltaTime;
+            //     int newFloorTime = Mathf.FloorToInt(remainingTime);
 
-                    for (int i = 0; i < lobbySlots.Length; ++i)
-                    {
-                        if (lobbySlots[i] != null)
-                        {//there is maxPlayer slots, so some could be == null, need to test it before accessing!
-                            (lobbySlots[i] as LobbyPlayer).RpcUpdateCountdown(floorTime);
-                        }
-                    }
-                }
-            }
+            //     if (newFloorTime != floorTime)
+            //     {//to avoid flooding the network of message, we only send a notice to client when the number of plain seconds change.
+            //         floorTime = newFloorTime;
 
-            for (int i = 0; i < lobbySlots.Length; ++i)
-            {
-                if (lobbySlots[i] != null)
-                {
-                    (lobbySlots[i] as LobbyPlayer).RpcUpdateCountdown(0);
-                }
-            }
+            //         for (int i = 0; i < lobbySlots.Length; ++i)
+            //         {
+            //             if (lobbySlots[i] != null)
+            //             {//there is maxPlayer slots, so some could be == null, need to test it before accessing!
+            //                 (lobbySlots[i] as LobbyPlayer).RpcUpdateCountdown(floorTime); // TODO: this line produces a NullPointerException
+            //             }
+            //         }
+            //     }
+            // }
 
+            // for (int i = 0; i < lobbySlots.Length; ++i)
+            // {
+            //     if (lobbySlots[i] != null)
+            //     {
+            //         (lobbySlots[i] as LobbyPlayer).RpcUpdateCountdown(0);
+            //     }
+            // }
+            yield return null;
             ServerChangeScene(playScene);
         }
 
