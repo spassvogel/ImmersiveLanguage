@@ -1,7 +1,4 @@
-﻿	using UnityEngine;
-using System.Collections;
-using System;
-using UnityEngine.Networking.NetworkSystem;
+﻿using UnityEngine;
 using UnityEngine.Networking;
 
 public class GamePlayer : NetworkLobbyPlayer {
@@ -17,10 +14,11 @@ public class GamePlayer : NetworkLobbyPlayer {
 
 	   // Only turn cardboard controls on for local player
 	   cardboard.SetActive(isLocalPlayer);
+       
 	   
 	   if(meshRenderer){
 		   // Disable rendering of local player (so the player wont see himself when looking down)
-		meshRenderer.enabled = !isLocalPlayer;		   
+		  meshRenderer.enabled = !isLocalPlayer;
 	   }
 	}
 	
