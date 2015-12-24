@@ -3160,7 +3160,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 440168}
   updateEarly: 0
-  offset: {x: 0, y: 0, z: 0}
+  xRotateMin: 0
+  xRotateMax: 0
 --- !u!114 &11409236
 MonoBehaviour:
   m_ObjectHideFlags: 1
