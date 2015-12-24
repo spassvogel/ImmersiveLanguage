@@ -3466,7 +3466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e00d42098a712e4bb865682007cfe50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsThreeDimensional: 0
+  IsThreeDimensional: 1
   Equalize: 0
   EqualizeSpeed: 1
   TargetEqualizeVolume: .75
@@ -3735,6 +3735,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: AmplitudeThreshold
       value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: IsThreeDimensional
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -938,12 +938,11 @@ GameObject:
   - 114: {fileID: 11409708}
   - 114: {fileID: 11487130}
   - 114: {fileID: 11471778}
-  - 114: {fileID: 11425998}
-  - 82: {fileID: 8228440}
-  - 114: {fileID: 11426610}
   - 114: {fileID: 11478582}
-  - 114: {fileID: 11420130}
   - 114: {fileID: 11435974}
+  - 114: {fileID: 11487702}
+  - 82: {fileID: 8254152}
+  - 114: {fileID: 11404754}
   m_Layer: 0
   m_Name: GamePlayer_Role1
   m_TagString: Untagged
@@ -3317,7 +3316,7 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 198670}
   m_Enabled: 1
---- !u!82 &8228440
+--- !u!82 &8254152
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -3418,6 +3417,22 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11404754
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e00d42098a712e4bb865682007cfe50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsThreeDimensional: 1
+  Equalize: 0
+  EqualizeSpeed: 1
+  TargetEqualizeVolume: .75
+  MaxEqualization: 5
 --- !u!114 &11408248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3688,6 +3703,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3995cc6db284649a793472ad14b220f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11487702
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e904559f96a703943a92e743db837fb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11493516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3885,6 +3911,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: AmplitudeThreshold
       value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: IsThreeDimensional
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
