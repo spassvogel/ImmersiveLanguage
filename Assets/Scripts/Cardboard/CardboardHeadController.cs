@@ -58,6 +58,6 @@ public class CardboardHeadController : MonoBehaviour {
 	transform.localRotation = Cardboard.SDK.HeadPose.Orientation;
 
 	// Update target rotation (the head wrapper)
-    target.transform.rotation = transform.rotation *  Quaternion.Euler(offset.x, offset.y, offset.z);
+    target.transform.rotation = transform.rotation;
   }
 }
