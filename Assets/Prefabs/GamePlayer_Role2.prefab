@@ -636,7 +636,7 @@ GameObject:
   - 114: {fileID: 11402702}
   - 114: {fileID: 11426614}
   - 114: {fileID: 11445604}
-  - 114: {fileID: 11425088}
+  - 114: {fileID: 11456136}
   m_Layer: 0
   m_Name: GamePlayer_Role2
   m_TagString: Untagged
@@ -3313,7 +3313,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114918}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10e36fc3c514d0441ad10822ab9ac743, type: 3}
   m_Name: 
@@ -3341,7 +3341,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 133056}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
   m_Name: 
@@ -3355,25 +3355,6 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
---- !u!114 &11425088
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 133056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1267208747, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Target: {fileID: 469938}
-  m_ChildIndex: 1
-  m_SendInterval: .100000001
-  m_SyncRotationAxis: 2
-  m_RotationSyncCompression: 0
-  m_MovementThreshold: .00100000005
-  m_InterpolateRotation: .5
-  m_InterpolateMovement: .5
 --- !u!114 &11426376
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3500,6 +3481,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DebugAudio: 0
   Mute: 0
+--- !u!114 &11456136
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 133056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50ba37c4b95a194c907715146d79753, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouthMovement: {fileID: 11426376}
+  voiceTranceiver: {fileID: 11426614}
+  talkingTimeout: .5
 --- !u!114 &11456138
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3803,6 +3798,18 @@ Prefab:
       propertyPath: IsThreeDimensional
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: mouthMovement
+      value: 
+      objectReference: {fileID: 11426376}
+    - target: {fileID: 0}
+      propertyPath: voiceTranceiver
+      value: 
+      objectReference: {fileID: 11426614}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 133056}

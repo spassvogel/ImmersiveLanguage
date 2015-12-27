@@ -935,7 +935,6 @@ GameObject:
   - 114: {fileID: 11486432}
   - 114: {fileID: 11481448}
   - 114: {fileID: 11441316}
-  - 114: {fileID: 11409708}
   - 114: {fileID: 11487130}
   - 114: {fileID: 11471778}
   - 114: {fileID: 11478582}
@@ -943,8 +942,9 @@ GameObject:
   - 114: {fileID: 11487702}
   - 82: {fileID: 8254152}
   - 114: {fileID: 11404754}
-  - 114: {fileID: 11431372}
   - 114: {fileID: 11413620}
+  - 114: {fileID: 11437892}
+  - 114: {fileID: 11459588}
   m_Layer: 0
   m_Name: GamePlayer_Role1
   m_TagString: Untagged
@@ -3487,26 +3487,6 @@ MonoBehaviour:
   screenParallax: 0
   stereoPaddingX: 0
   stereoPaddingY: 0
---- !u!114 &11409708
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 149230}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
-  m_SendInterval: .5
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: .00100000005
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
 --- !u!114 &11413620
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3537,25 +3517,6 @@ MonoBehaviour:
   updateEarly: 0
   xRotateUp: 45
   xRotateDown: 40
---- !u!114 &11431372
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 149230}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1267208747, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Target: {fileID: 457904}
-  m_ChildIndex: 1
-  m_SendInterval: .5
-  m_SyncRotationAxis: 2
-  m_RotationSyncCompression: 0
-  m_MovementThreshold: .00100000005
-  m_InterpolateRotation: .5
-  m_InterpolateMovement: .5
 --- !u!114 &11435454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3601,6 +3562,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DebugAudio: 0
   Mute: 0
+--- !u!114 &11437892
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50ba37c4b95a194c907715146d79753, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouthMovement: {fileID: 11441316}
+  voiceTranceiver: {fileID: 11487702}
+  talkingTimeout: .5
 --- !u!114 &11441316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3612,7 +3587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82494526d72b080449b2ce37c18d1c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  talking: 1
+  talking: 0
   jaw: {fileID: 400126}
   upperLip: {fileID: 432108}
   jawRestPosition: 0
@@ -3665,7 +3640,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 153950}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10e36fc3c514d0441ad10822ab9ac743, type: 3}
   m_Name: 
@@ -3687,6 +3662,26 @@ MonoBehaviour:
   toggleCullingMask:
     serializedVersion: 2
     m_Bits: 0
+--- !u!114 &11459588
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149230}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: .100000001
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: .00100000005
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!114 &11471778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3980,7 +3975,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: talking
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: meshRenderer
@@ -4010,6 +4005,14 @@ Prefab:
       propertyPath: m_SendInterval
       value: .5
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: mouthMovement
+      value: 
+      objectReference: {fileID: 11441316}
+    - target: {fileID: 0}
+      propertyPath: voiceTranceiver
+      value: 
+      objectReference: {fileID: 11487702}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 149230}

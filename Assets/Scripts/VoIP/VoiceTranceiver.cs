@@ -33,7 +33,7 @@ namespace AssemblyCSharp
 			}
 		}
 
-		public void onReceiveVoipFrame(Listener receiveVoipFrame) {
+        public void addVoipFrameListener(Listener receiveVoipFrame) {
 			listeners.Add(receiveVoipFrame);
 		}
 

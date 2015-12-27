@@ -18,7 +18,7 @@ public class VoiceController : VoiceControllerBase
 		tranceiver = GetComponent<VoiceTranceiver>();
 
 		// Listen to VoipTranceiver
-		tranceiver.onReceiveVoipFrame(this.FrameReceived);
+		tranceiver.addVoipFrameListener(this.FrameReceived);
 
 		// -- Copied from VoiceControllerBase; removed microphone start
 		codec = GetCodec();
