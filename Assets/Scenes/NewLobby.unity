@@ -4568,10 +4568,10 @@ MonoBehaviour:
   m_PlayScene: LaTienda
   lobbySlots: []
   gamePayerConfigs:
-  - prefab: {fileID: 133056, guid: 452a839e95cd29f4191e0b4eca8bb794, type: 2}
+  - prefab: {fileID: 149230, guid: 11114dd72b6684b439a6fd046e5ead3a, type: 2}
     spawnPosition: {x: 1.5, y: 0, z: -.442000002}
     spawnRotation: {x: 0, y: 90, z: 0}
-  - prefab: {fileID: 149230, guid: 11114dd72b6684b439a6fd046e5ead3a, type: 2}
+  - prefab: {fileID: 133056, guid: 452a839e95cd29f4191e0b4eca8bb794, type: 2}
     spawnPosition: {x: 3.5, y: 0, z: -.930000007}
     spawnRotation: {x: 0, y: -90, z: 0}
   prematchCountdown: 1
