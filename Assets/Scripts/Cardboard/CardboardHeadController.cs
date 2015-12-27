@@ -75,11 +75,11 @@ public class CardboardHeadController : MonoBehaviour {
     Cardboard.SDK.UpdateState();
 
     // Update self rotation (which contains the cameras)
-	  transform.localRotation = Cardboard.SDK.HeadPose.Orientation;
+	transform.localRotation = Cardboard.SDK.HeadPose.Orientation;
 
   	Vector3 rotation = Cardboard.SDK.HeadPose.Orientation.eulerAngles;
     rotation.x = ClampAngle(rotation.x, startRotation.x - xRotateUp, startRotation.x + xRotateDown);
-		target.rotation = Quaternion.Euler(rotation + targetRoot.rotation.eulerAngles);
+	target.rotation = Quaternion.Euler(rotation + targetRoot.rotation.eulerAngles);
   }
   
   
