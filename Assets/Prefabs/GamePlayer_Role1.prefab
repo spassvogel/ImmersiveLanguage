@@ -944,6 +944,7 @@ GameObject:
   - 82: {fileID: 8254152}
   - 114: {fileID: 11404754}
   - 114: {fileID: 11431372}
+  - 114: {fileID: 11413620}
   m_Layer: 0
   m_Name: GamePlayer_Role1
   m_TagString: Untagged
@@ -3492,13 +3493,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 149230}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_TransformSyncMode: 1
-  m_SendInterval: .100000001
+  m_SendInterval: .5
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
   m_SyncSpin: 0
@@ -3506,6 +3507,20 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
+--- !u!114 &11413620
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df01baf1d8bb77b42992d2ac0e574866, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VoipListeners:
+  - {fileID: 149230}
+  DebugListeners: []
 --- !u!114 &11415270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3528,14 +3543,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 149230}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -1267208747, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Target: {fileID: 457904}
   m_ChildIndex: 1
-  m_SendInterval: .100000001
+  m_SendInterval: .5
   m_SyncRotationAxis: 2
   m_RotationSyncCompression: 0
   m_MovementThreshold: .00100000005
@@ -3960,6 +3975,10 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: VoipListeners.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: talking
       value: 1
       objectReference: {fileID: 0}
@@ -3982,6 +4001,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPlayerAuthority
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_SendInterval
+      value: .5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

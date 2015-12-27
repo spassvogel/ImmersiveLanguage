@@ -58,13 +58,11 @@ public class VoiceController : VoiceControllerBase
 		message.data = encodedFrame.RawData;
 		message.headers = encodedFrame.ObtainHeaders();
 
-        Debug.Log("Send VOIP");
         tranceiver.SendVoipFrame(encodedFrame);
     }
     
     public void FrameReceived(VoicePacketWrapper frame)
     {
-        Debug.Log("Receive VOIP");
         ReceiveAudioData(frame);
     }
 }

@@ -1271,7 +1271,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.InputField+OnChangeEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_SelectionColor: {r: 1, g: .964705884, b: 0, a: 1}
-  m_Text: 127.0.0.1
+  m_Text: 192.168.1.1
   m_CaretBlinkRate: .850000024
 --- !u!114 &530912286
 MonoBehaviour:
@@ -2006,7 +2006,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 127.0.0.1
+  m_Text: 192.168.1.1
 --- !u!222 &791131349
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4568,10 +4568,10 @@ MonoBehaviour:
   m_PlayScene: LaTienda
   lobbySlots: []
   gamePayerConfigs:
-  - prefab: {fileID: 149230, guid: 11114dd72b6684b439a6fd046e5ead3a, type: 2}
+  - prefab: {fileID: 133056, guid: 452a839e95cd29f4191e0b4eca8bb794, type: 2}
     spawnPosition: {x: 1.5, y: 0, z: -.442000002}
     spawnRotation: {x: 0, y: 90, z: 0}
-  - prefab: {fileID: 133056, guid: 452a839e95cd29f4191e0b4eca8bb794, type: 2}
+  - prefab: {fileID: 149230, guid: 11114dd72b6684b439a6fd046e5ead3a, type: 2}
     spawnPosition: {x: 3.5, y: 0, z: -.930000007}
     spawnRotation: {x: 0, y: -90, z: 0}
   prematchCountdown: 1
