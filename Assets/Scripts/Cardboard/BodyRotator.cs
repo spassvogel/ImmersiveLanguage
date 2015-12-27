@@ -17,7 +17,6 @@ private float speed = .02f;
 		headRotation.x = rootRotation.x;
 		headRotation.z = rootRotation.z;		
 				
-		float yRotation = Vector3.Slerp(rootRotation, headRotation, speed * Time.deltaTime).y;
 		transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(headRotation) , speed * Time.deltaTime * Quaternion.Angle(transform.rotation, head.rotation));
 	}
 	

@@ -1628,7 +1628,7 @@ Transform:
   - {fileID: 1215687898}
   - {fileID: 298793625}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
 --- !u!1001 &183684459
 Prefab:
   m_ObjectHideFlags: 0
@@ -5745,6 +5745,59 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 435542, guid: c1435bdf5fb96b34d969f61c2fe7e7e4, type: 2}
   m_PrefabInternal: {fileID: 162742920}
+--- !u!1 &889426427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 889426429}
+  - 114: {fileID: 889426428}
+  m_Layer: 0
+  m_Name: Cardboard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &889426428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 889426427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a40b544b8c3553c40852ae7ad35a9343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vrModeEnabled: 1
+  distortionCorrection: 2
+  enableAlignmentMarker: 1
+  enableSettingsButton: 1
+  backButtonMode: 1
+  tapIsTrigger: 1
+  neckModelScale: 0
+  autoDriftCorrection: 1
+  electronicDisplayStabilization: 0
+  autoUntiltHead: 1
+  UseUnityRemoteInput: 0
+  screenSize: 0
+  deviceType: 0
+  stereoScreenScale: 1
+--- !u!4 &889426429
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 889426427}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 27
 --- !u!1001 &891535122
 Prefab:
   m_ObjectHideFlags: 0
@@ -10548,7 +10601,7 @@ Transform:
   - {fileID: 1020197931}
   - {fileID: 280749464}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 18
 --- !u!1001 &1614411400
 Prefab:
   m_ObjectHideFlags: 0
@@ -11626,7 +11679,7 @@ Transform:
   - {fileID: 254431360}
   - {fileID: 1420494543}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
 --- !u!1001 &1742809514
 Prefab:
   m_ObjectHideFlags: 0
@@ -12498,7 +12551,7 @@ Transform:
   - {fileID: 709316117}
   - {fileID: 601336451}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 17
 --- !u!1001 &1867170641
 Prefab:
   m_ObjectHideFlags: 0

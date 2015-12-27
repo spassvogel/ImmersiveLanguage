@@ -32,7 +32,7 @@ public class VoipMouthMovement : MonoBehaviour {
 	}
     
     void Update() {
-        if(talking) {
+        if(talking && valid) {
             if(Time.time > lastVoipMessage + talkingTimeout) {
                 stopTalking();
             }
