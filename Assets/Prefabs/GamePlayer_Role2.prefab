@@ -3313,13 +3313,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114918}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10e36fc3c514d0441ad10822ab9ac743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  head: {fileID: 440168}
-  speed: .0199999996
+  head: {fileID: 476164}
+  hips: {fileID: 410682}
+  maxAngle: 45
 --- !u!114 &11412092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3800,7 +3801,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: mouthMovement

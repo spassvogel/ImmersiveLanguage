@@ -1046,22 +1046,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &153950
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 457904}
-  - 114: {fileID: 11456264}
-  m_Layer: 0
-  m_Name: Mesh root
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &155338
 GameObject:
   m_ObjectHideFlags: 1
@@ -1177,6 +1161,22 @@ GameObject:
   - 4: {fileID: 438110}
   m_Layer: 0
   m_Name: Stereo Render
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &160766
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 430936}
+  - 114: {fileID: 11496070}
+  m_Layer: 0
+  m_Name: MeshRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2089,6 +2089,19 @@ Transform:
   - {fileID: 458636}
   m_Father: {fileID: 462116}
   m_RootOrder: 1
+--- !u!4 &430936
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160766}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 483366}
+  m_Father: {fileID: 489152}
+  m_RootOrder: 2
 --- !u!4 &431218
 Transform:
   m_ObjectHideFlags: 1
@@ -2548,19 +2561,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 414442}
   m_RootOrder: 17
---- !u!4 &457904
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 153950}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 483366}
-  m_Father: {fileID: 489152}
-  m_RootOrder: 2
 --- !u!4 &458636
 Transform:
   m_ObjectHideFlags: 1
@@ -2952,7 +2952,7 @@ Transform:
   m_Children:
   - {fileID: 440906}
   - {fileID: 449184}
-  m_Father: {fileID: 457904}
+  m_Father: {fileID: 430936}
   m_RootOrder: 0
 --- !u!4 &483622
 Transform:
@@ -3050,12 +3050,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 149230}
   m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
-  m_LocalPosition: {x: 2.61999989, y: 0, z: -0}
+  m_LocalPosition: {x: 1.01324117, y: 1.60167528e-17, z: -.721330404}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 433522}
   - {fileID: 443580}
-  - {fileID: 457904}
+  - {fileID: 430936}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &490966
@@ -3634,19 +3634,6 @@ MonoBehaviour:
   toggleCullingMask:
     serializedVersion: 2
     m_Bits: 0
---- !u!114 &11456264
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 153950}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10e36fc3c514d0441ad10822ab9ac743, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  head: {fileID: 407880}
-  speed: .0199999996
 --- !u!114 &11457296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3798,6 +3785,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20fb7fbcfb2e642bba6211eb9ea19962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11496070
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10e36fc3c514d0441ad10822ab9ac743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  head: {fileID: 414442}
+  hips: {fileID: 440906}
+  maxAngle: 45
 --- !u!124 &12414138
 Behaviour:
   m_ObjectHideFlags: 1
@@ -3999,7 +4000,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_SendInterval
