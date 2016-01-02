@@ -45,7 +45,9 @@ public class MessageNode : MonoBehaviour {
 
 	public void OnVoipMessage(VoipMessage message) {
 		foreach(VoipListener listener in voipListeners) {
-			listener.OnVoipMessage(message);
+			if(listener != null){
+				listener.OnVoipMessage(message);
+			}
 		}
 	}
 }
