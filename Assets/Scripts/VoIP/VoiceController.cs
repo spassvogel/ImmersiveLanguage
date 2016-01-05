@@ -63,6 +63,7 @@ public class VoiceController : VoiceControllerBase
     
     public void FrameReceived(VoicePacketWrapper frame)
     {
+		Debug.Log("received frame");
         ReceiveAudioData(frame);
     }
 }

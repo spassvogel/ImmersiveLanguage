@@ -27,6 +27,7 @@ namespace AssemblyCSharp
 			// Check if I am indeed the origin (end-to-end communication only)
 			if(message.originID == this.netId.Value) {
                 var encodedFrame = new VoicePacketWrapper(message.headers, message.data);
+				//Debug.Log(encodedFrame.Index);
 				foreach(Listener listener in listeners) {
 					listener(encodedFrame);
 				}
