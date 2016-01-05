@@ -3658,12 +3658,12 @@ SkinnedMeshRenderer:
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100000, guid: beae284d5615b5343bbe468ab865e5e2, type: 2}
-  - {fileID: 2100000, guid: d572839f3901b8d4687f31b6b31b96a9, type: 2}
+  - {fileID: 2100000, guid: c25b06c3de2e3374590a40e6cd223444, type: 2}
   - {fileID: 2100000, guid: 2f9e6a8fa898ab84eb064cafd21e252a, type: 2}
   - {fileID: 2100000, guid: b81f9fe23b303134cb3f20ce78f328a0, type: 2}
   - {fileID: 2100000, guid: bda5ecff00e8f714ca9060e41b031f4a, type: 2}
   - {fileID: 2100000, guid: d06e34c61af978443985c366e231fb6c, type: 2}
-  - {fileID: 2100000, guid: b95df4cd6cb100b40a02dba7d0a859fa, type: 2}
+  - {fileID: 2100000, guid: 2513e95c5e3d8a141828d9eeafcec9e3, type: 2}
   - {fileID: 2100000, guid: 1d4222c0a39538543b5c7a0168bfb333, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}

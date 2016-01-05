@@ -3050,7 +3050,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 149230}
   m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
-  m_LocalPosition: {x: 1.01324117, y: 1.60167528e-17, z: -.721330404}
+  m_LocalPosition: {x: -8.60437775, y: -3.45895815, z: -5.33868408}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 433522}
@@ -3835,7 +3835,7 @@ SkinnedMeshRenderer:
   - {fileID: 2100000, guid: 41284ba0fecd37e4586034114a66deb3, type: 2}
   - {fileID: 2100000, guid: e68e39a780dad574bb872a694955e3ab, type: 2}
   - {fileID: 2100000, guid: d18f2f61f1c7b1746a48c9f1e9acbc07, type: 2}
-  - {fileID: 2100000, guid: 1ed092a180257b240b8a355dbfec5c15, type: 2}
+  - {fileID: 2100000, guid: b14d89b656943c34dbf57418628a3534, type: 2}
   - {fileID: 2100000, guid: e8d063d716e310142b8cca064ae75110, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
@@ -4026,6 +4026,14 @@ Prefab:
       propertyPath: PushToTalk
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[5]
+      value: 
+      objectReference: {fileID: 2100000, guid: b14d89b656943c34dbf57418628a3534, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b199a85b9ed58ff4c8105164ed28878f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 149230}
