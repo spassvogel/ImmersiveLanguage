@@ -4565,7 +4565,7 @@ MonoBehaviour:
     type: 2}
   m_GamePlayerPrefab: {fileID: 149230, guid: 11114dd72b6684b439a6fd046e5ead3a, type: 2}
   m_LobbyScene: NewLobby
-  m_PlayScene: Empty
+  m_PlayScene: LaTienda
   lobbySlots: []
   gamePayerConfigs:
   - prefab: {fileID: 149230, guid: 11114dd72b6684b439a6fd046e5ead3a, type: 2}
