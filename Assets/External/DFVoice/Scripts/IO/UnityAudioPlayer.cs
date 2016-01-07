@@ -61,7 +61,7 @@ namespace DaikonForge.VoIP
 				if( lastTime > GetComponent<AudioSource>().timeSamples )
 				{
 					played += GetComponent<AudioSource>().clip.samples;
-					Debug.Log("adding " + played);
+					//Debug.Log("adding " + played);
 				}
 
 				lastTime = GetComponent<AudioSource>().timeSamples;
