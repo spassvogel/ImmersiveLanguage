@@ -1180,7 +1180,6 @@ GameObject:
   - 20: {fileID: 2037282}
   - 124: {fileID: 12477620}
   - 114: {fileID: 11463194}
-  - 114: {fileID: 11479030}
   m_Layer: 0
   m_Name: Main Camera Right
   m_TagString: Untagged
@@ -1259,7 +1258,6 @@ GameObject:
   - 20: {fileID: 2086726}
   - 124: {fileID: 12475410}
   - 114: {fileID: 11412092}
-  - 114: {fileID: 11460010}
   m_Layer: 0
   m_Name: Main Camera Left
   m_TagString: Untagged
@@ -2135,7 +2133,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 133056}
   m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
-  m_LocalPosition: {x: -13.5683527, y: -.11037071, z: -3.34988022}
+  m_LocalPosition: {x: 3.18199992, y: 1.44000006, z: 1.47000003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 423816}
@@ -3543,20 +3541,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3995cc6db284649a793472ad14b220f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11460010
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 176574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b87ea445a48e9f44ab51e80325d56b0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Shader: {fileID: 4800000, guid: 36a3aa3217d66c645a4665ff1490cb28, type: 3}
-  White: {r: .764705896, g: .922109604, b: 1, a: 1}
-  Mode: 1
 --- !u!114 &11463194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3572,20 +3556,6 @@ MonoBehaviour:
   toggleCullingMask:
     serializedVersion: 2
     m_Bits: 0
---- !u!114 &11479030
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 173724}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b87ea445a48e9f44ab51e80325d56b0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Shader: {fileID: 4800000, guid: 36a3aa3217d66c645a4665ff1490cb28, type: 3}
-  White: {r: .764705896, g: .922109604, b: 1, a: 1}
-  Mode: 1
 --- !u!114 &11482260
 MonoBehaviour:
   m_ObjectHideFlags: 1
