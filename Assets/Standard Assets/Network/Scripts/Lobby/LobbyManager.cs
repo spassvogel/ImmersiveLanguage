@@ -14,6 +14,8 @@ namespace UnityStandardAssets.Network
 
         static public LobbyManager s_Singleton;
 
+		[SerializeField] private bool firstPlayerSpectates = false;
+
 		[SerializeField]
 		private GamePlayerConfig[] gamePayerConfigs;
 
@@ -325,9 +327,16 @@ namespace UnityStandardAssets.Network
 		
 		public override GameObject OnLobbyServerCreateGamePlayer(NetworkConnection conn, short playerControllerId){
 			// Here the actual player is created
-					
+
 			// I have no friggin' idea why connectionId is -1, 1 ... there has to be a better way..
 			int index = conn.connectionId < 0 ? 0 : conn.connectionId;
+			if(firstPlayerSpectates){
+				switch(conn.connectionId){
+					case -1: index = 2;	break;
+					case 1: index = 0; break;
+					default: index = 1; break;
+				}
+			}
 			var prefab = gamePayerConfigs[index].prefab;
 			var position = gamePayerConfigs[index].spawnPosition;
 			var rotation = Quaternion.Euler(gamePayerConfigs[index].spawnRotation);

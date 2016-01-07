@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class MessageNetworkManager : UnityStandardAssets.Network.LobbyManager
 {
+
+	
     public const int MSG_DEBUG = 1001;
 	public const int MSG_VOIP = 1002;
 
