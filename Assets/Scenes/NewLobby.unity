@@ -692,7 +692,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 0
-  m_Text: JOIN A GAME
+  m_Text: JOIN A SESSION
 --- !u!222 &347540337
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1077,7 +1077,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 0
-  m_Text: NETWORK LOBBY EXAMPLE
+  m_Text: IMMERSIVE LANGUAGE
 --- !u!222 &401547888
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3247,7 +3247,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: PLAY AND HOST
+  m_Text: HOST
 --- !u!222 &1069572251
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4016,7 +4016,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0
-  m_Text: START A GAME
+  m_Text: START A SESSION
 --- !u!222 &1397367839
 CanvasRenderer:
   m_ObjectHideFlags: 0
