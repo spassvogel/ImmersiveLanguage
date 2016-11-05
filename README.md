@@ -1,6 +1,6 @@
 # ImmersiveLanguage
 
-Virtual Reality project created by @rremigius (Remi Alkemade) and @spassvogel (Wouter van den Heuvel). This is a prototype Unity (5.4) project demonstrating the use of VR (via Google Cardboard) for use in a language-learning scenario. 
+Virtual Reality project created by [Remi Alkemade](https://github.com/rremigius) and [Wouter van den Heuvel](https://github.com/spassvogel). This is a prototype Unity (5.4) project demonstrating the use of VR (via Google Cardboard) for use in a language-learning scenario. 
 
 
 ### Screenshots
@@ -22,10 +22,10 @@ The benefit to using VR is that you can start to have conversations about (virtu
 
 ### Features
 
-- [ ] Able to run stand-alone (on Windows) or on Android 
-- [ ] Stereoscopic image output and Google cardboard eye gaze input
-- [ ] Networked code, transmitting audio (voice over IP) 
-- [ ] Rich, immersive environment
+- [x] Able to run stand-alone (on Windows) or on Android 
+- [x] Stereoscopic image output and Google cardboard eye gaze input
+- [x] Networked code, transmitting audio (voice over IP) 
+- [x] Rich, immersive environment
 
 
 ### Future work
