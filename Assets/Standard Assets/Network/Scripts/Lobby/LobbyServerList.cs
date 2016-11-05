@@ -33,7 +33,7 @@ namespace UnityStandardAssets.Network
             RequestPage(0);
         }
 
-        public void OnGUIMatchList(ListMatchResponse response)
+		/*public void OnGUIMatchList(System.Collections.Generic.List<MatchInfoSnapshot> response)
         {
             if (response.matches.Count == 0)
             {
@@ -59,7 +59,7 @@ namespace UnityStandardAssets.Network
 
                 o.transform.SetParent(serverListRect, false);
             }
-        }
+        }*/
 
         public void ChangePage(int dir)
         {
@@ -76,7 +76,7 @@ namespace UnityStandardAssets.Network
         {
             previousPage = currentPage;
             currentPage = page;
-            lobbyManager.matchMaker.ListMatches(page, 6, "", OnGUIMatchList);
+           // lobbyManager.matchMaker.ListMatches(page, 6, "", OnGUIMatchList);
         }
     }
 }

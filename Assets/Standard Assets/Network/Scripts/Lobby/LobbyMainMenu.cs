@@ -57,11 +57,16 @@ namespace UnityStandardAssets.Network
         public void OnClickCreateMatchmakingGame()
         {
             lobbyManager.StartMatchMaker();
-            lobbyManager.matchMaker.CreateMatch(
+
+			lobbyManager.matchMaker.CreateMatch(
                 matchNameInput.text,
                 (uint)lobbyManager.maxPlayers,
                 true,
+				"",
+				"",
                 "",
+				0,
+				0,
                 lobbyManager.OnMatchCreate);
 
             lobbyManager.backDelegate = lobbyManager.StopHost;

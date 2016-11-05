@@ -186,7 +186,7 @@ namespace UnityStandardAssets.Network
         {
             if (_isMatchmaking)
             {
-                this.matchMaker.DestroyMatch((NetworkID)_currentMatchID, OnMatchDestroyed);
+				this.matchMaker.DestroyMatch((NetworkID)_currentMatchID, 0, OnDestroyMatch);
                 _disconnectServer = true;
             }
             else
@@ -242,21 +242,22 @@ namespace UnityStandardAssets.Network
             SetServerInfo("Hosting", networkAddress);
         }
 
-        public override void OnMatchCreate(UnityEngine.Networking.Match.CreateMatchResponse matchInfo)
-        {
-            base.OnMatchCreate(matchInfo);
+		public override void OnMatchCreate(bool success, string extendedInfo, MatchInfo matchInfo)
+		{
+			_currentMatchID = (ulong)matchInfo.networkId;
 
-            _currentMatchID = (System.UInt64)matchInfo.networkId;
-        }
+			base.OnMatchCreate(success, extendedInfo, matchInfo);
+		}
 
-        public void OnMatchDestroyed(BasicResponse resp)
-        {
-            if (_disconnectServer)
-            {
-                StopMatchMaker();
-                StopHost();
-            }
-        }
+		public override void OnDestroyMatch(bool success, string extendedInfo)
+		{
+			if (_disconnectServer)
+			{
+				StopMatchMaker();
+				StopHost();
+			}
+			base.OnDestroyMatch(success, extendedInfo);
+		}
 
         //allow to handle the (+) button to add/remove player
         public void OnPlayersNumberModified(int count)
