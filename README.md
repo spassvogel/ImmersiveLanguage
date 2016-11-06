@@ -34,9 +34,9 @@ Future work entails a teacher mode with more features. The teacher can observe a
 
 
 
-### Moving pictures
+### Recording
 
-forthcoming...
+![Alt text](/Misc/Movies/demo.gif?raw=true "Demo")
 
 
 
