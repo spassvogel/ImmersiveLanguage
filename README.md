@@ -5,8 +5,8 @@ Virtual Reality project created by [Remi Alkemade](https://github.com/rremigius)
 
 ### Screenshots
 
-![Alt text](/Misc/Screenshots/Screenshot_20161105-012114.png?raw=true "Screenshot 1")
-![Alt text](/Misc/Screenshots/Screenshot_20161105-014629.png?raw=true "Screenshot 2")
+![Screenshot 1](/Misc/Screenshots/Screenshot_20161105-012114.png?raw=true "Screenshot 1")
+![Screenshot 2](/Misc/Screenshots/Screenshot_20161105-014629.png?raw=true "Screenshot 2")
 
 
 ### Project
@@ -36,7 +36,7 @@ Future work entails a teacher mode with more features. The teacher can observe a
 
 ### Recording
 
-![Alt text](/Misc/Movies/demo.gif?raw=true "Demo")
+![Demo](/https://dl.dropboxusercontent.com/u/33045583/Static/Media_Technology/ImmersiveLanguage/Movies/demo.gif "Demo")
 
 
 
