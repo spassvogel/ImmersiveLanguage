@@ -36,7 +36,7 @@ Future work entails a teacher mode with more features. The teacher can observe a
 
 ### Recording
 
-![Demo](/https://dl.dropboxusercontent.com/u/33045583/Static/Media_Technology/ImmersiveLanguage/Movies/demo.gif "Demo")
+![Demo](https://dl.dropboxusercontent.com/u/33045583/Static/Media_Technology/ImmersiveLanguage/Movies/demo.gif "Demo")
 
 
 
