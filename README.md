@@ -5,17 +5,17 @@ Virtual Reality project created by [Remi Alkemade](https://github.com/rremigius)
 
 ### Screenshots
 
-![Alt text](/Misc/Screenshots/Screenshot_20161105-012114.png?raw=true "Screenshot 1")
-![Alt text](/Misc/Screenshots/Screenshot_20161105-014629.png?raw=true "Screenshot 2")
+![Screenshot 1](/Misc/Screenshots/Screenshot_20161105-012114.png?raw=true "Screenshot 1")
+![Screenshot 2](/Misc/Screenshots/Screenshot_20161105-014629.png?raw=true "Screenshot 2")
 
 
 ### Project
 
-The presents a multi-user virtual environment where language students (at the moment just two players are supported), represented as virtual avatars, can communicate in a foreign language whilst a teacher observes, gives instructions and feedback.
+The project presents a multi-user virtual environment where language students (at the moment just two players are supported), represented as virtual avatars, can communicate in a foreign language whilst a teacher observes, gives instructions and feedback.
 
 The idea is to portray a realistic scenario, preferably applicable to the language being studied. Typical scenarios will be commercial situations (a shop, a market, a train station, an airport) or social ones (a bar, a beach). In the current prototype one 'shop' scenario is developed.
 
-Players are wearing (Google cardboard) headsets and can use the built-in microphone of their smartphone. A pair of headphones is recommended. They can look around in the room but not move. The when they are looking around the head movement and rotation is actually visible to the other player. Also, when a player talks, the other player will see the lips of his avatar move.
+Players are wearing (Google cardboard) headsets and can use the built-in microphone of their smartphone. A pair of headphones is recommended. They can look around in the room but not move. When players are looking around the head movement and rotation is actually visible to the other player. Also, when a player talks, the other player will see the lips of his avatar move.
 
 The benefit to using VR is that you can start to have conversations about (virtual) physical things in the room, e.g. one player (a buyer) might be given the instruction to buy a perticular object in the environment (the shop). Or two friends at a tourist attraction might have a conversation about their environment. We believe head tracking a very important aspect in this. Of course role-playing scenarios are commonplace in language learning, but adding extra fidelity (visual and sound) will add to realism, as well as fun. Add to the fact that a VR solution will increase efficiency as the three people won’t have to be in the same room
 
@@ -34,9 +34,9 @@ Future work entails a teacher mode with more features. The teacher can observe a
 
 
 
-### Moving pictures
+### Recording
 
-forthcoming...
+![Demo](/https://dl.dropboxusercontent.com/u/33045583/Static/Media_Technology/ImmersiveLanguage/Movies/demo.gif "Demo")
 
 
 
