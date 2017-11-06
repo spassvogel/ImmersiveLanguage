@@ -9,4 +9,4 @@ In this prototype only one scene and two players are implemented.
 
 Technologies: Unity3D, C#, Google Cardboard, VoIP 
 
-Note that the graphical assets are missing from this REPO as they cannot be distributed freely.
+Note that the graphical assets are missing from this repo as they cannot be distributed freely.
