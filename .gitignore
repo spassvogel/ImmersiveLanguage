@@ -4,9 +4,9 @@
 Temp/
 Library/
 
-# ===================================== #
-# Visual Studio / MonoDevelop generated #
-# ===================================== #
+# =============================================== #
+# IDE generated #
+# =============================================== #
 ExportedObj/
 obj/
 *.svd
@@ -18,6 +18,7 @@ obj/
 *.user
 *.unityproj
 *.booproj
+*.consulo/
 
 # ============ #
 # OS generated #
@@ -29,6 +30,14 @@ obj/
 .Trashes
 ehthumbs.db
 Thumbs.db
+Thumbs.db.meta
 
 # Output folder
 Bin/
+
+# Models
+Assets/Models
+
+# Git generated
+*.orig
+*.orig.meta
