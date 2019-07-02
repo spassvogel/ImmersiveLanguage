@@ -6,6 +6,7 @@
 
 public class CardboardHeadController : MonoBehaviour {
     public Transform target;
+    public Transform targetRoot;
 
 
   /// Determines whether the head tracking is applied during `LateUpdate()` or
@@ -20,8 +21,9 @@ public class CardboardHeadController : MonoBehaviour {
   /// during `Update()` by setting this to true.
   public bool updateEarly = false;
 
-  [SerializeField]  private Vector3 offset;
-
+  [SerializeField]  private float xRotateUp = 45f;
+  [SerializeField]  private float xRotateDown = 40f;
+  
   /// Returns a ray based on the heads position and forward direction, after making
   /// sure the transform is up to date.  Use to raycast into the scene to determine
   /// objects that the user is looking at.
@@ -34,7 +36,25 @@ public class CardboardHeadController : MonoBehaviour {
 
   private bool updated;
 
+  void OnDrawGizmos()
+  {
+   // Quaternion.
+    if(target == null)
+    return;
+      
+    
+    Gizmos.color = Color.blue;
+    Gizmos.DrawRay(target.position, target.forward);
+  }
+
+  Vector3 startRotation;
+  void Start()
+  {
+    startRotation = target.rotation.eulerAngles;
+  }
+
   void Update() {
+    
     updated = false;  // OK to recompute head pose.
     if (updateEarly) {
       UpdateHead();
@@ -54,11 +74,24 @@ public class CardboardHeadController : MonoBehaviour {
     updated = true;
     Cardboard.SDK.UpdateState();
 
-
-	// Update target rotation (the head wrapper)
-    target.transform.rotation = transform.rotation *  Quaternion.Euler(offset.x, offset.y, offset.z) * Cardboard.SDK.HeadPose.Orientation;
-	// Update self rotation (which contains the cameras)
+    // Update self rotation (which contains the cameras)
 	transform.localRotation = Cardboard.SDK.HeadPose.Orientation;
-	
+
+  	Vector3 rotation = Cardboard.SDK.HeadPose.Orientation.eulerAngles;
+    rotation.x = ClampAngle(rotation.x, startRotation.x - xRotateUp, startRotation.x + xRotateDown);
+	target.rotation = Quaternion.Euler(rotation + targetRoot.rotation.eulerAngles);
   }
+  
+  
+	 float ClampAngle(float angle, float min, float max)	 {
+ 
+     if (angle<90 || angle>270){       // if angle in the critic region...
+         if (angle>180) angle -= 360;  // convert all angles to -180..+180
+         if (max>180) max -= 360;
+         if (min>180) min -= 360;
+     }    
+     angle = Mathf.Clamp(angle, min, max);
+     if (angle<0) angle += 360;  // if angle negative, convert to 0..360
+     return angle;
+ }
 }

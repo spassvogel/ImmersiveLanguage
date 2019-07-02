@@ -17,8 +17,6 @@ public class SimpleMouthMovement : MonoBehaviour {
 	[SerializeField] private float upperLipOpenPosition = 0.0115f;
 	
 	private bool mouthMoving = false;
-	private bool mouthClosing = false;
-
 		
 	// Use this for initialization
 	void Start () {
@@ -36,7 +34,6 @@ public class SimpleMouthMovement : MonoBehaviour {
 			}
 		}
 		else if (!mouthMoving && jaw.transform.localRotation.z != jawRestPosition) {
-			mouthClosing = true;
 			// So that the avatar doesn't look like an idiot with his mouth open
 			StartCoroutine(CloseJaw(.5f));
 		}
@@ -56,7 +53,8 @@ public class SimpleMouthMovement : MonoBehaviour {
 			
 			float lipX = Mathf.Lerp(lipPosition, newLipX, (elapsedTime / time));
 			upperLip.transform.localPosition = new Vector3(lipX, upperLip.transform.localPosition.y, upperLip.transform.localPosition.z);
-         	elapsedTime += Time.deltaTime;
+         	
+			elapsedTime += Time.deltaTime;
          	yield return new WaitForEndOfFrame();
      	}
 
@@ -64,8 +62,6 @@ public class SimpleMouthMovement : MonoBehaviour {
 	 }
 	 
 	 IEnumerator CloseJaw(float time){
-
 		 yield return StartCoroutine(MoveJaw(jawRestPosition,upperLipRestPosition, time));
-		 mouthClosing = false;	
 	 }
 }

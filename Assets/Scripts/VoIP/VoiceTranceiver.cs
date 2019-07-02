@@ -24,16 +24,17 @@ namespace AssemblyCSharp
 		}
 
 		public void OnVoipMessage(VoipMessage message) {
-			// Check if I am not the origin
+			// Check if I am indeed the origin (end-to-end communication only)
 			if(message.originID == this.netId.Value) {
                 var encodedFrame = new VoicePacketWrapper(message.headers, message.data);
+				//Debug.Log(encodedFrame.Index);
 				foreach(Listener listener in listeners) {
 					listener(encodedFrame);
 				}
 			}
 		}
 
-		public void onReceiveVoipFrame(Listener receiveVoipFrame) {
+        public void addVoipFrameListener(Listener receiveVoipFrame) {
 			listeners.Add(receiveVoipFrame);
 		}
 
@@ -44,6 +45,7 @@ namespace AssemblyCSharp
 			message.originID = this.netId.Value;
 			message.data = encodedFrame.RawData;
 			message.headers = encodedFrame.ObtainHeaders();
+            
 			NetworkServer.SendToAll(MessageNetworkManager.MSG_VOIP, message);
 			encodedFrame.ReleaseHeaders();
 		}

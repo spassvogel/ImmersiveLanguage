@@ -121,8 +121,10 @@ namespace DaikonForge.VoIP
 		{
 			if( !IsLocal || DebugAudio )
 			{
+				//Debug.Log("encoded index" + encodedFrame.Index + " next expected" + nextExpectedIndex);
 				// discard old samples
 				if( encodedFrame.Index < nextExpectedIndex ) return;
+
 
 				// voice controller is muted - don't bother decoding or buffering audio data
 				if( Mute )

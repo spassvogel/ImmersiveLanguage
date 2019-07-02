@@ -14,7 +14,9 @@ namespace UnityStandardAssets.Network
         static Color[] Colors = new Color[] { Color.magenta, Color.red, Color.cyan, Color.blue, Color.green, Color.yellow };
         //used on server to avoid assigning the same color to two player
         static List<int> _colorInUse = new List<int>();
-
+		
+		static int[] roles = new int[] { 1,2 };
+		
         public Button colorButton;
         public InputField nameInput;
         public Button readyButton;
@@ -29,6 +31,7 @@ namespace UnityStandardAssets.Network
         public string playerName = "";
         [SyncVar(hook = "OnMyColor")]
         public Color playerColor = Color.white;
+		public int role = 0;
 
         public Color OddRowColor = new Color(250.0f / 255.0f, 250.0f / 255.0f, 250.0f / 255.0f, 1.0f);
         public Color EvenRowColor = new Color(180.0f / 255.0f, 180.0f / 255.0f, 180.0f / 255.0f, 1.0f);
@@ -127,7 +130,8 @@ namespace UnityStandardAssets.Network
             nameInput.onEndEdit.AddListener(OnNameChanged);
 
             colorButton.onClick.RemoveAllListeners();
-            colorButton.onClick.AddListener(OnColorClicked);
+            //colorButton.onClick.AddListener(OnColorClicked);
+			colorButton.onClick.AddListener(OnRoleClicked);
 
             readyButton.onClick.RemoveAllListeners();
             readyButton.onClick.AddListener(OnReadyClicked);
@@ -203,6 +207,12 @@ namespace UnityStandardAssets.Network
         {
             CmdColorChange();
         }
+		
+		
+        public void OnRoleClicked()
+        {
+            CmdRoleChange();
+        }		
 
         public void OnReadyClicked()
         {
@@ -248,7 +258,46 @@ namespace UnityStandardAssets.Network
 
         [Command]
         public void CmdColorChange()
-        {
+        {//unused
+            int idx = System.Array.IndexOf(Colors, playerColor);
+
+            int inUseIdx = _colorInUse.IndexOf(idx);
+
+            if (idx < 0) idx = 0;
+
+            idx = (idx + 1) % Colors.Length;
+
+            bool alreadyInUse = false;
+
+            do
+            {
+                alreadyInUse = false;
+                for (int i = 0; i < _colorInUse.Count; ++i)
+                {
+                    if (_colorInUse[i] == idx)
+                    {//that color is already in use
+                        alreadyInUse = true;
+                        idx = (idx + 1) % Colors.Length;
+                    }
+                }
+            }
+            while (alreadyInUse);
+
+            if (inUseIdx >= 0)
+            {//if we already add an entry in the colorTabs, we change it
+                _colorInUse[inUseIdx] = idx;
+            }
+            else
+            {//else we add it
+                _colorInUse.Add(idx);
+            }
+
+            playerColor = Colors[idx];
+        }
+
+       [Command]
+        public void CmdRoleChange()
+        {//unused
             int idx = System.Array.IndexOf(Colors, playerColor);
 
             int inUseIdx = _colorInUse.IndexOf(idx);

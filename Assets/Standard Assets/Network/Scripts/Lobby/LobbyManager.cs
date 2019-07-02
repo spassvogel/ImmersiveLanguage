@@ -14,6 +14,10 @@ namespace UnityStandardAssets.Network
 
         static public LobbyManager s_Singleton;
 
+		[SerializeField] private bool firstPlayerSpectates = false;
+
+		[SerializeField]
+		private GamePlayerConfig[] gamePayerConfigs;
 
         [Tooltip("Time in second between all players ready & match start")]
         public float prematchCountdown = 5.0f;
@@ -182,7 +186,7 @@ namespace UnityStandardAssets.Network
         {
             if (_isMatchmaking)
             {
-                this.matchMaker.DestroyMatch((NetworkID)_currentMatchID, OnMatchDestroyed);
+				this.matchMaker.DestroyMatch((NetworkID)_currentMatchID, 0, OnDestroyMatch);
                 _disconnectServer = true;
             }
             else
@@ -238,21 +242,22 @@ namespace UnityStandardAssets.Network
             SetServerInfo("Hosting", networkAddress);
         }
 
-        public override void OnMatchCreate(UnityEngine.Networking.Match.CreateMatchResponse matchInfo)
-        {
-            base.OnMatchCreate(matchInfo);
+		public override void OnMatchCreate(bool success, string extendedInfo, MatchInfo matchInfo)
+		{
+			_currentMatchID = (ulong)matchInfo.networkId;
 
-            _currentMatchID = (System.UInt64)matchInfo.networkId;
-        }
+			base.OnMatchCreate(success, extendedInfo, matchInfo);
+		}
 
-        public void OnMatchDestroyed(BasicResponse resp)
-        {
-            if (_disconnectServer)
-            {
-                StopMatchMaker();
-                StopHost();
-            }
-        }
+		public override void OnDestroyMatch(bool success, string extendedInfo)
+		{
+			if (_disconnectServer)
+			{
+				StopMatchMaker();
+				StopHost();
+			}
+			base.OnDestroyMatch(success, extendedInfo);
+		}
 
         //allow to handle the (+) button to add/remove player
         public void OnPlayersNumberModified(int count)
@@ -275,8 +280,7 @@ namespace UnityStandardAssets.Network
             GameObject obj = Instantiate(lobbyPlayerPrefab.gameObject) as GameObject;
 
             LobbyPlayer newPlayer = obj.GetComponent<LobbyPlayer>();
-            newPlayer.ToggleJoinButton(numPlayers + 1 >= minPlayers);
-
+            newPlayer.ToggleJoinButton(numPlayers + 1 >= minPlayers);	
 
             for (int i = 0; i < lobbySlots.Length; ++i)
             {
@@ -305,6 +309,7 @@ namespace UnityStandardAssets.Network
                 }
             }
         }
+		
 
         public override void OnLobbyServerDisconnect(NetworkConnection conn)
         {
@@ -320,6 +325,26 @@ namespace UnityStandardAssets.Network
             }
 
         }
+		
+		public override GameObject OnLobbyServerCreateGamePlayer(NetworkConnection conn, short playerControllerId){
+			// Here the actual player is created
+
+			// I have no friggin' idea why connectionId is -1, 1 ... there has to be a better way..
+			int index = conn.connectionId < 0 ? 0 : conn.connectionId;
+			if(firstPlayerSpectates){
+				switch(conn.connectionId){
+					case -1: index = 2;	break;
+					case 1: index = 0; break;
+					default: index = 1; break;
+				}
+			}
+			var prefab = gamePayerConfigs[index].prefab;
+			var position = gamePayerConfigs[index].spawnPosition;
+			var rotation = Quaternion.Euler(gamePayerConfigs[index].spawnRotation);
+			var player = (GameObject)Instantiate(prefab, position, rotation);
+
+			return player;
+		} 
 
         public override bool OnLobbyServerSceneLoadedForPlayer(GameObject lobbyPlayer, GameObject gamePlayer)
         {
@@ -344,35 +369,37 @@ namespace UnityStandardAssets.Network
             float remainingTime = prematchCountdown;
             int floorTime = Mathf.FloorToInt(remainingTime);
 
-            while (remainingTime > 0)
-            {
-                yield return null;
+            // TODO: The code below produces a NullPointerException 
 
-                remainingTime -= Time.deltaTime;
-                int newFloorTime = Mathf.FloorToInt(remainingTime);
+            // while (remainingTime > 0)
+            // {
+            //     yield return null;
 
-                if (newFloorTime != floorTime)
-                {//to avoid flooding the network of message, we only send a notice to client when the number of plain seconds change.
-                    floorTime = newFloorTime;
+            //     remainingTime -= Time.deltaTime;
+            //     int newFloorTime = Mathf.FloorToInt(remainingTime);
 
-                    for (int i = 0; i < lobbySlots.Length; ++i)
-                    {
-                        if (lobbySlots[i] != null)
-                        {//there is maxPlayer slots, so some could be == null, need to test it before accessing!
-                            (lobbySlots[i] as LobbyPlayer).RpcUpdateCountdown(floorTime);
-                        }
-                    }
-                }
-            }
+            //     if (newFloorTime != floorTime)
+            //     {//to avoid flooding the network of message, we only send a notice to client when the number of plain seconds change.
+            //         floorTime = newFloorTime;
 
-            for (int i = 0; i < lobbySlots.Length; ++i)
-            {
-                if (lobbySlots[i] != null)
-                {
-                    (lobbySlots[i] as LobbyPlayer).RpcUpdateCountdown(0);
-                }
-            }
+            //         for (int i = 0; i < lobbySlots.Length; ++i)
+            //         {
+            //             if (lobbySlots[i] != null)
+            //             {//there is maxPlayer slots, so some could be == null, need to test it before accessing!
+            //                 (lobbySlots[i] as LobbyPlayer).RpcUpdateCountdown(floorTime); // TODO: this line produces a NullPointerException
+            //             }
+            //         }
+            //     }
+            // }
 
+            // for (int i = 0; i < lobbySlots.Length; ++i)
+            // {
+            //     if (lobbySlots[i] != null)
+            //     {
+            //         (lobbySlots[i] as LobbyPlayer).RpcUpdateCountdown(0);
+            //     }
+            // }
+            yield return null;
             ServerChangeScene(playScene);
         }
 
@@ -385,7 +412,7 @@ namespace UnityStandardAssets.Network
             infoPanel.gameObject.SetActive(false);
 
             conn.RegisterHandler(MsgKicked, KickedMessageHandler);
-
+			
             if (!NetworkServer.active)
             {//only to do on pure client (not self hosting client)
                 ChangeTo(lobbyPanel);
@@ -405,6 +432,17 @@ namespace UnityStandardAssets.Network
         {
             ChangeTo(mainMenuPanel);
             infoPanel.Display("Cient error : " + (errorCode == 6 ? "timeout" : errorCode.ToString()), "Close", null);
+        }
+
+		[System.Serializable]
+        public class GamePlayerConfig
+        {
+	        [Tooltip("This prefab will be spawned for this player")]
+			public GameObject prefab;
+	        [Tooltip("The prefab will spawn at this position")]
+			public Vector3 spawnPosition;
+	        [Tooltip("The prefab will have this rotation")]
+			public Vector3 spawnRotation;
         }
     }
 }
